@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    if (!document.body.id) document.body.id = "top";
 
     /* PREVENT NATIVE FORM SUBMISSION (INTAKE + CONTACT) */
     document.querySelectorAll("form.intake-form").forEach((form) => {
@@ -300,4 +301,64 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+});
+
+/* SITE-WIDE WAYFINDING
+   Keep important destinations consistent without duplicating markup on every page. */
+document.addEventListener("DOMContentLoaded", function () {
+    const navList = document.querySelector(".main-nav .nav-list");
+    if (navList && !navList.querySelector('a[href="join-team.html"]')) {
+        const item = document.createElement("li");
+        item.innerHTML = '<a href="join-team.html">JOIN OUR TEAM</a>';
+        navList.appendChild(item);
+    }
+    document.querySelectorAll(".main-nav .dropdown-menu").forEach((menu) => {
+        const parentLink = menu.closest(".has-dropdown")?.querySelector(":scope > a");
+        if (parentLink && /SERVICES/i.test(parentLink.textContent) && !menu.querySelector('a[href*="3d-printed-models"]')) {
+            const item = document.createElement("li");
+            item.innerHTML = '<a href="services.html#3d-printed-models">3D Printed Scale Models</a>';
+            menu.appendChild(item);
+        }
+    });
+
+    document.querySelectorAll("[data-href]").forEach((card) => {
+        const destination = card.getAttribute("data-href");
+        if (!destination) return;
+        card.classList.add("interactive-card");
+        card.setAttribute("role", "link");
+        card.setAttribute("tabindex", "0");
+        const go = () => { window.location.href = destination; };
+        card.addEventListener("click", (event) => {
+            if (!event.target.closest("a, button, input, select, textarea")) go();
+        });
+        card.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                go();
+            }
+        });
+    });
+
+    const backToTop = document.createElement("button");
+    backToTop.className = "back-to-top";
+    backToTop.type = "button";
+    backToTop.setAttribute("aria-label", "Back to top");
+    backToTop.innerHTML = '<span aria-hidden="true">↑</span><span>Top</span>';
+    document.body.appendChild(backToTop);
+    const updateTopButton = () => backToTop.classList.toggle("is-visible", window.scrollY > 650);
+    window.addEventListener("scroll", updateTopButton, { passive: true });
+    updateTopButton();
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    if (!document.querySelector(".mobile-quick-nav")) {
+        const quickNav = document.createElement("nav");
+        quickNav.className = "mobile-quick-nav";
+        quickNav.setAttribute("aria-label", "Quick navigation");
+        quickNav.innerHTML = [
+            '<a href="packages.html">Packages</a>',
+            '<a href="examples.html">Examples</a>',
+            '<a href="https://script.google.com/a/macros/sitelinevisuals3d.com/s/AKfycbz71U5INv9AdQohMYs-zPgChKcAfuir9EBifocUbyRALp9pKCNi-VTh82mvklUXR22r/exec" class="project-modal-trigger">Start Project</a>'
+        ].join("");
+        document.body.appendChild(quickNav);
+    }
 });

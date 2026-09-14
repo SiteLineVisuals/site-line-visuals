@@ -44,7 +44,7 @@
                         <a href="packages.html" class="dropdown-toggle">PACKAGES & PRICING <span class="arrow">▼</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="packages.html#new-construction">New Construction Packages</a></li>
-                            <li><a href="packages.html#realtor-existing">Realtor / Existing Home Packages</a></li>
+                            <li><a href="realtor.html#pricing">Realtor / Existing Home Packages</a></li>
                             <li><a href="packages.html#upgrades">Upgrades & Add-Ons</a></li>
                             <li><a href="packages.html#compare">Compare Packages</a></li>
                         </ul>
@@ -104,9 +104,18 @@
     <!-- MAIN CONTENT -->
     <section class="content-section">
         <div class="container">
+            <nav class="example-category-nav" aria-label="Example categories">
+                <a href="#example-3d-models">3D Models</a>
+                <a href="#example-vr">VR</a>
+                <a href="#example-lidar">LiDAR</a>
+                <a href="#example-thermal">Thermal</a>
+                <a href="#example-drone">Drone</a>
+                <a href="#example-photorealistic">Photorealistic</a>
+                <a href="#example-printed-models">3D Printed Models</a>
+            </nav>
             
             <!-- FEATURED VISUAL JOURNEY -->
-            <div class="featured-visual-section reveal">
+            <div class="featured-visual-section reveal" id="example-photorealistic">
                 <h2 class="section-heading" style="color: #ffffff !important;">The Complete Visual Journey</h2>
                 <p style="color: var(--text-gray); margin-bottom: 30px; line-height: 1.6;">From structural framing and thermal imaging to precise LiDAR scanning and photorealistic AI interior visualization—see all layers of your project in one connected experience.</p>
                 <p style="color: #7c8790; font-size: 12px; font-style: italic; margin-bottom: 20px;">AI-enhanced concept visualization — shown for illustration; not a photograph of a completed project.</p>
@@ -114,6 +123,7 @@
                 <div class="featured-image-wrapper">
                     <img src="images/kitchen-ai-preview.png" alt="AI-enhanced concept visualization: kitchen renovation progressing from framing to AI thermal view to finished interior">
                 </div>
+                <div class="card-action-row"><a class="card-text-link" href="services.html#photorealistic-visualization">Learn more →</a><a class="card-text-link" href="services.html">Back to services →</a></div>
             </div>
 
             <!-- VIDEO GRID -->
@@ -122,7 +132,7 @@
             <div class="examples-grid">
                 
                 <!-- Video 1: AR / Full Scale VR -->
-                <div class="example-card reveal">
+                <div class="example-card reveal" id="example-vr">
                     <div class="example-video-wrap">
                         <video src="videos/v3.mp4" controls muted playsinline>
                             <track kind="captions" src="captions/v3-en.vtt" srclang="en" label="English" default>
@@ -131,11 +141,12 @@
                     <div class="example-info">
                         <h4>Full-Scale Lot Placement</h4>
                         <p>Visualizing the 3D model directly on the property to experience layout and views before construction begins.</p>
+                        <div class="card-action-row"><a class="card-text-link" href="services.html#vr-walkthroughs">Learn more →</a></div>
                     </div>
                 </div>
 
                 <!-- Video 2: Framing / Walkthrough -->
-                <div class="example-card reveal">
+                <div class="example-card reveal" id="example-3d-models">
                     <div class="example-video-wrap">
                         <video src="videos/v6.mp4" controls muted playsinline>
                             <track kind="captions" src="captions/v6-en.vtt" srclang="en" label="English" default>
@@ -144,11 +155,12 @@
                     <div class="example-info">
                         <h4>Framing & Progress Capture</h4>
                         <p>Documenting critical structural stages, allowing homeowners to walk their future home while tracking real progress.</p>
+                        <div class="card-action-row"><a class="card-text-link" href="services.html#3d-models">Learn more →</a></div>
                     </div>
                 </div>
 
                 <!-- Video 3: Thermal Imaging -->
-                <div class="example-card reveal">
+                <div class="example-card reveal" id="example-thermal">
                     <div class="example-video-wrap">
                         <video src="videos/v5.mp4" controls muted playsinline>
                             <track kind="captions" src="captions/v5-en.vtt" srclang="en" label="English" default>
@@ -157,11 +169,12 @@
                     <div class="example-info">
                         <h4>Thermal Imaging</h4>
                         <p>Capturing temperature patterns during key construction stages — a visual reference, not a moisture or inspection diagnosis.</p>
+                        <div class="card-action-row"><a class="card-text-link" href="services.html#thermal-imaging">Learn more →</a></div>
                     </div>
                 </div>
 
                 <!-- Video 4: Site Measurement -->
-                <div class="example-card reveal">
+                <div class="example-card reveal" id="example-lidar">
                     <div class="example-video-wrap">
                         <video src="videos/v4.mp4" controls muted playsinline>
                             <track kind="captions" src="captions/v4-en.vtt" srclang="en" label="English" default>
@@ -170,10 +183,34 @@
                     <div class="example-info">
                         <h4>LiDAR & 3D Site Capture</h4>
                         <p>Using LiDAR scanning to create a detailed visual digital record of spaces before walls are closed.</p>
+                        <div class="card-action-row"><a class="card-text-link" href="services.html#lidar-3d-scanning">Learn more →</a></div>
+                    </div>
+                </div>
+
+                <div class="example-card reveal" id="example-drone">
+                    <div class="example-video-wrap">
+                        <video src="videos/v1.mp4" controls muted playsinline></video>
+                    </div>
+                    <div class="example-info">
+                        <h4>Drone & Site Visualization</h4>
+                        <p>See the home, site and construction progress together from an aerial perspective when conditions and authorization permit.</p>
+                        <div class="card-action-row"><a class="card-text-link" href="services.html#drone-imagery">Learn more →</a></div>
+                    </div>
+                </div>
+
+                <div class="example-card reveal" id="example-printed-models">
+                    <div class="printed-model-visual" aria-hidden="true">
+                        <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 47 60 14l48 33-48 32L12 47Z"/><path d="M24 55v24l36 17 36-17V55M60 79v17"/><path d="M43 41h34v25H43zM50 48h8v8h-8zm12 0h8v8h-8z"/></svg>
+                    </div>
+                    <div class="example-info">
+                        <h4>Your Home in Your Hands</h4>
+                        <p>Turn the approved digital home into a physical scale model designed to be held, displayed and kept after construction.</p>
+                        <div class="card-action-row"><a class="card-text-link" href="services.html#3d-printed-models">Learn more →</a><a class="card-text-link" href="packages.html#printed-model-upgrade">View upgrade →</a></div>
                     </div>
                 </div>
 
             </div>
+            <div class="service-return-links"><a class="card-text-link" href="services.html">Back to services →</a><a class="card-text-link project-modal-trigger" href="https://script.google.com/a/macros/sitelinevisuals3d.com/s/AKfycbz71U5INv9AdQohMYs-zPgChKcAfuir9EBifocUbyRALp9pKCNi-VTh82mvklUXR22r/exec">Start your project →</a></div>
             
         </div>
     </section>
