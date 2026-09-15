@@ -196,9 +196,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     (function () {
-        const FORM_URL = "https://script.google.com/a/macros/sitelinevisuals3d.com/s/AKfycbz71U5INv9AdQohMYs-zPgChKcAfuir9EBifocUbyRALp9pKCNi-VTh82mvklUXR22r/exec";
+        const FORM_URL = "https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec";
         const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
         const projectTriggers = document.querySelectorAll(".project-modal-trigger");
+        const projectIframe = document.querySelector("#projectModal .form-modal-iframe");
 
         let formWindow = null;
         let pollTimer = null;
@@ -211,12 +212,17 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => toast.remove(), 6000);
         }
 
+        function freshFormUrl() {
+            return FORM_URL + "?start=1&t=" + Date.now();
+        }
+
         function openFormNewTab() {
             if (formWindow && !formWindow.closed) {
+                formWindow.location.href = freshFormUrl();
                 formWindow.focus();
                 return;
             }
-            formWindow = window.open(FORM_URL, "_blank");
+            formWindow = window.open(freshFormUrl(), "_blank");
             if (pollTimer) clearInterval(pollTimer);
             pollTimer = setInterval(function () {
                 if (formWindow && formWindow.closed) {
@@ -230,6 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 if (!isMobile() && projectModal) {
+                    if (projectIframe) projectIframe.src = freshFormUrl();
                     projectModal.open(e);
                 } else {
                     openFormNewTab();
