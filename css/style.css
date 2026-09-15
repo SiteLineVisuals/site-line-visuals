@@ -2810,7 +2810,7 @@ a.service-card:focus-visible {
 .service-area-map-action {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 20px;
     padding: 20px 24px;
     border-top: 1px solid rgba(132, 204, 22, 0.25);
