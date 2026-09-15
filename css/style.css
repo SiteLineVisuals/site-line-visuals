@@ -2722,6 +2722,19 @@ a.service-card:focus-visible {
     padding: 20px 15px;
     border-radius: 8px;
     position: relative;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    border: 1px solid transparent;
+}
+
+.record-step:hover,
+.record-step:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(132, 204, 22, 0.55);
+    background: rgba(132, 204, 22, 0.08);
+    outline: none;
 }
 
 .record-grid .record-step:not(:last-child)::after {
@@ -2752,6 +2765,15 @@ a.service-card:focus-visible {
     font-size: 0.9rem;
     margin: 0;
     line-height: 1.5;
+}
+
+.record-step-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--primary-green);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
 }
 
 .audience-icons-row.centered {
