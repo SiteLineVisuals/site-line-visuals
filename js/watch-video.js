@@ -1,7 +1,6 @@
 /**
  * Watch Video modal — opens a lightbox with the promo video.
- * Currently reuses videos/hero-bg.mp4 as a placeholder source;
- * swap in the real promo video file once the client provides one.
+ * Uses the approved Site Line Visuals promotional video.
  */
 (function () {
     function init() {
