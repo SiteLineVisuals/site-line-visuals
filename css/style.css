@@ -2804,7 +2804,10 @@ a.service-card:focus-visible {
 .service-area-map-block img {
     display: block;
     width: 100%;
+    aspect-ratio: 16 / 9;
     height: auto;
+    object-fit: cover;
+    background: #0b1115;
 }
 
 .service-area-map-action {
@@ -2814,12 +2817,6 @@ a.service-card:focus-visible {
     gap: 20px;
     padding: 20px 24px;
     border-top: 1px solid rgba(132, 204, 22, 0.25);
-}
-
-.service-area-map-action p {
-    margin: 0;
-    color: var(--text-gray);
-    font-size: 14px;
 }
 
 @media (max-width: 640px) {
