@@ -1,21 +1,14 @@
 /**
  * ZIP / service-area checker (homepage).
- * Client-side placeholder list of ZIP codes for the confirmed North Idaho
- * launch area — replace with the real backend service-area lookup used by
- * the intake before launch.
+ * North Idaho launch-area ZIP codes synchronized from the approved
+ * Intake Form Settings spreadsheet, Active_ZIPs tab.
  */
 (function () {
     var IN_AREA_ZIPS = [
-        // Coeur d'Alene
-        '83814', '83815', '83816',
-        // Post Falls
-        '83854', '83877',
-        // Sandpoint
-        '83864',
-        // Silver Valley (Kellogg, Wallace, Osburn, Mullan, Pinehurst)
-        '83837', '83873', '83849', '83846', '83850',
-        // Priest River
-        '83856'
+        '83801', '83803', '83804', '83809', '83810', '83811', '83812', '83813',
+        '83814', '83815', '83821', '83822', '83833', '83835', '83836', '83837',
+        '83839', '83842', '83846', '83848', '83850', '83852', '83854', '83856',
+        '83858', '83860', '83864', '83868', '83869', '83873', '83874', '83876'
     ];
 
     function init() {
