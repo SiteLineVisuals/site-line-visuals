@@ -2776,6 +2776,23 @@ a.service-card:focus-visible {
     letter-spacing: 0.06em;
 }
 
+/* Full-width written explanations opened from the homepage stage cards. */
+.process-block.written-stage-block {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 30px;
+}
+
+.written-stage-block > div {
+    width: 100%;
+    max-width: 920px;
+}
+
+.written-stage-block p {
+    max-width: 900px;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
 .audience-icons-row.centered {
     display: flex;
     flex-wrap: nowrap;
