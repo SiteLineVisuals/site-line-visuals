@@ -236,7 +236,13 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 if (!isMobile() && projectModal) {
-                    if (projectIframe) projectIframe.src = freshFormUrl();
+                    if (projectIframe) {
+                        projectIframe.style.visibility = "hidden";
+                        projectIframe.addEventListener("load", function revealFreshIntake() {
+                            projectIframe.style.visibility = "visible";
+                        }, { once: true });
+                        projectIframe.src = freshFormUrl();
+                    }
                     projectModal.open(e);
                 } else {
                     openFormNewTab();
