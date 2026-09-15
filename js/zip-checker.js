@@ -30,10 +30,10 @@
             }
 
             if (IN_AREA_ZIPS.indexOf(zip) !== -1) {
-                result.textContent = "Good news — that ZIP is in our North Idaho launch area. You're clear to start your project.";
+                result.textContent = "Yes — you're in our service area.";
                 result.classList.add('show', 'in-area');
             } else {
-                result.textContent = "That ZIP is outside our confirmed launch area for now. Contact us with your project address and we'll confirm availability.";
+                result.textContent = "Not currently in our confirmed service area.";
                 result.classList.add('show', 'out-area');
             }
         });

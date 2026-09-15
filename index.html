@@ -134,18 +134,6 @@
                     </div>
                 </div>
 
-                <!-- ZIP / service-area checker -->
-                <div class="zip-checker zip-checker-spaced" id="zipChecker">
-                    <h4>CHECK YOUR SERVICE AREA</h4>
-                    <p>See if your project ZIP code is in our North Idaho launch area before you start the full intake.</p>
-                    <form id="zipCheckerForm" class="zip-checker-row">
-                        <label for="zipInput" class="sr-only">ZIP code</label>
-                        <input type="text" id="zipInput" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="Enter ZIP code" required>
-                        <button type="submit" class="btn btn-primary">CHECK</button>
-                    </form>
-                    <p id="zipResult" class="zip-result" role="status"></p>
-                </div>
-
                 <button type="button" class="watch-video-btn watch-video-btn-above-cards" id="watchVideoBtn">
                     <span class="wv-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg>
@@ -275,6 +263,17 @@
                         <span class="aud-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span>
                         <span>Developers & Investors</span>
                     </a>
+                </div>
+
+                <!-- ZIP / service-area checker -->
+                <div class="zip-checker zip-checker-compact" id="zipChecker">
+                    <h4>CHECK YOUR SERVICE AREA</h4>
+                    <form id="zipCheckerForm" class="zip-checker-row">
+                        <label for="zipInput" class="sr-only">ZIP code</label>
+                        <input type="text" id="zipInput" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="Enter ZIP code" required>
+                        <button type="submit" class="btn btn-primary">CHECK</button>
+                    </form>
+                    <p id="zipResult" class="zip-result" role="status"></p>
                 </div>
                 
                 <div class="trust-features-row centered">

@@ -3836,6 +3836,16 @@ a.service-card:focus-visible {
     margin-bottom: 36px;
 }
 
+.zip-checker-compact {
+    width: 100%;
+    max-width: none;
+    margin: 24px 0 28px;
+}
+
+.zip-checker-compact .zip-result {
+    margin-bottom: 0;
+}
+
 .watch-video-btn-above-cards {
     margin-bottom: 20px;
 }
