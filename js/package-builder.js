@@ -101,6 +101,9 @@
     var totalEl = document.getElementById('builderTotal');
     var noteEl = document.getElementById('builderEstimateNote');
     var countEl = document.getElementById('builderCount');
+    var paymentAmountEl = document.getElementById('builderPaymentAmount');
+    var paymentTermsEl = document.getElementById('builderPaymentTerms');
+    var payButton = document.getElementById('builderPayNow');
     if (!list || !empty || !totalEl) return;
 
     var html = '';
@@ -132,6 +135,30 @@
       ? 'One or more selections require a custom quote and are not included in the total.'
       : 'This is a planning estimate. Your written proposal will confirm final scope, taxes and price.';
     if (countEl) countEl.textContent = count;
+
+    var addonsDue = state.addons.reduce(function (sum, item) {
+      return item.quote ? sum : sum + item.price;
+    }, 0);
+    var isCustom = state.package && state.package.id === 'level-4';
+    var paymentDue = state.package ? (isCustom ? 4200 : state.package.price) + addonsDue : 0;
+
+    if (paymentAmountEl) {
+      paymentAmountEl.textContent = state.package ? money(paymentDue) : '$0';
+    }
+    if (paymentTermsEl) {
+      if (!state.package) {
+        paymentTermsEl.textContent = 'Choose a package to see the payment amount.';
+      } else if (isCustom) {
+        paymentTermsEl.textContent = '$4,200 custom-project deposit (equal to Level 3)' +
+          (addonsDue ? ' plus selected add-ons paid in full.' : '. Final balance is invoiced after the custom scope is approved.');
+      } else {
+        paymentTermsEl.textContent = 'Package and selected add-ons are paid in full.';
+      }
+    }
+    if (payButton) {
+      payButton.disabled = !state.package;
+      payButton.setAttribute('aria-disabled', !state.package ? 'true' : 'false');
+    }
   }
 
   document.addEventListener('click', function (event) {
@@ -164,6 +191,15 @@
     if (event.target.closest('#builderContinueShopping')) {
       var upgrades = document.getElementById('upgrades');
       if (upgrades) upgrades.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    if (event.target.closest('#builderPayNow')) {
+      var status = document.getElementById('builderPaymentStatus');
+      if (status) {
+        status.hidden = false;
+        status.textContent = 'Secure Square checkout is ready to be connected. No payment has been charged.';
+      }
     }
   });
 
