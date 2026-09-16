@@ -76,7 +76,9 @@
       var selected = addonIndex(button.dataset.builderId) >= 0;
       button.classList.toggle('is-selected', selected);
       button.setAttribute('aria-pressed', selected ? 'true' : 'false');
-      button.textContent = selected ? 'ADDED ✓' : (button.dataset.defaultLabel || 'ADD');
+      var label = button.querySelector('b');
+      if (label) label.textContent = selected ? 'ADDED ✓' : (button.dataset.defaultLabel || 'ADD');
+      else button.textContent = selected ? 'ADDED ✓' : (button.dataset.defaultLabel || 'ADD');
     });
 
     var list = document.getElementById('builderSelections');
