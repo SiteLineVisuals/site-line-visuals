@@ -4195,3 +4195,60 @@ a.service-card:focus-visible {
         grid-template-columns: 1fr;
     }
 }
+
+
+.builder-payment-box {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 24px;
+    margin: 20px 0 14px;
+    padding: 20px;
+    background: #080a0b;
+    border: 1px solid #4a545b;
+    border-radius: 10px;
+}
+.builder-payment-label {
+    margin: 0 0 3px;
+    color: #aeb7bd;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+.builder-payment-amount {
+    display: block;
+    color: #c8ff38;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.1;
+}
+.builder-payment-terms {
+    margin: 7px 0 0;
+    color: #c7ced2;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.builder-pay-now {
+    min-width: 170px;
+    cursor: pointer;
+}
+.builder-pay-now:disabled {
+    cursor: not-allowed;
+    opacity: .42;
+}
+.builder-payment-status {
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    color: #dce2e6;
+    background: rgba(200,255,56,.07);
+    border: 1px solid rgba(200,255,56,.35);
+    border-radius: 8px;
+    font-size: 13px;
+}
+@media (max-width: 700px) {
+    .builder-payment-box {
+        grid-template-columns: 1fr;
+    }
+    .builder-pay-now {
+        width: 100%;
+    }
+}
