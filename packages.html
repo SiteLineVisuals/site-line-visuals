@@ -252,11 +252,20 @@
                     <span class="builder-count"><span id="builderCount">0</span> selected</span>
                 </div>
                 <p class="builder-estimate-note" id="builderEstimateNote">This is a planning estimate. Your written proposal will confirm final scope, taxes and price.</p>
+                <div class="builder-payment-box">
+                    <div>
+                        <p class="builder-payment-label">PAYMENT DUE TODAY</p>
+                        <strong class="builder-payment-amount" id="builderPaymentAmount">$0</strong>
+                        <p class="builder-payment-terms" id="builderPaymentTerms">Choose a package to see the payment amount.</p>
+                    </div>
+                    <button type="button" class="btn btn-primary builder-pay-now" id="builderPayNow" disabled aria-disabled="true">PAY NOW</button>
+                </div>
+                <p class="builder-payment-status" id="builderPaymentStatus" hidden></p>
                 <div class="builder-actions">
                     <button type="button" class="btn btn-outline-green builder-shop-more" id="builderContinueShopping">CONTINUE SHOPPING</button>
                     <a href="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec?start=1" class="btn btn-primary builder-continue">FINISHED — CONTINUE TO INTAKE</a>
                 </div>
-                <p class="builder-payment-note">Secure online payment will be connected after the Square business setup and STCU deposit account are ready. No payment is collected on this preview.</p>
+                <p class="builder-payment-note">The Pay Now button will open a secure Square checkout after the Square account and STCU deposit account are connected. No card or bank information is stored on this website.</p>
             </div>
         </div>
     </section>
@@ -393,6 +402,6 @@
     </footer>
 
     <script src="js/main.js?v=1788111069"></script>
-    <script src="js/package-builder.js?v=2026091603"></script>
+    <script src="js/package-builder.js?v=2026091604"></script>
 </body>
 </html>
