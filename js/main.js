@@ -370,7 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
         quickNav.innerHTML = [
             '<a href="packages.html">Packages</a>',
             '<a href="examples.html">Examples</a>',
-            '<a href="https://script.google.com/a/macros/sitelinevisuals3d.com/s/AKfycbz71U5INv9AdQohMYs-zPgChKcAfuir9EBifocUbyRALp9pKCNi-VTh82mvklUXR22r/exec" class="project-modal-trigger">Start Project</a>'
+            '<a href="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec?start=1" class="project-modal-trigger">Start Project</a>'
         ].join("");
         document.body.appendChild(quickNav);
     }
