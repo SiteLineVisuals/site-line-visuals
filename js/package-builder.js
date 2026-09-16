@@ -43,6 +43,21 @@
     render();
   }
 
+  function showAddedMessage(name) {
+    var existing = document.getElementById('builderAddedToast');
+    if (existing) existing.remove();
+    var toast = document.createElement('div');
+    toast.id = 'builderAddedToast';
+    toast.className = 'builder-added-toast';
+    toast.textContent = name + ' added — keep shopping or review your build when ready.';
+    document.body.appendChild(toast);
+    window.setTimeout(function () { toast.classList.add('is-visible'); }, 10);
+    window.setTimeout(function () {
+      toast.classList.remove('is-visible');
+      window.setTimeout(function () { toast.remove(); }, 250);
+    }, 3200);
+  }
+
   function toggleAddon(button) {
     var item = itemFromButton(button);
     var index = addonIndex(item.id);
@@ -123,9 +138,10 @@
     var button = event.target.closest('[data-builder-type]');
     if (button) {
       event.preventDefault();
+      var wasSelected = button.classList.contains('is-selected');
       if (button.dataset.builderType === 'package') setPackage(button);
       else toggleAddon(button);
-      document.getElementById('package-builder').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!wasSelected) showAddedMessage(button.dataset.builderName || 'Item');
       return;
     }
 
@@ -142,6 +158,12 @@
       state = { package: null, addons: [] };
       saveState();
       render();
+      return;
+    }
+
+    if (event.target.closest('#builderContinueShopping')) {
+      var upgrades = document.getElementById('upgrades');
+      if (upgrades) upgrades.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 
