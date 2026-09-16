@@ -4157,3 +4157,41 @@ a.service-card:focus-visible {
         align-items: flex-start;
     }
 }
+
+
+.builder-actions {
+    display: grid;
+    grid-template-columns: minmax(190px, .7fr) minmax(260px, 1.3fr);
+    gap: 12px;
+}
+.builder-shop-more {
+    width: 100%;
+    cursor: pointer;
+}
+.builder-added-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    z-index: 100000;
+    width: min(560px, calc(100% - 32px));
+    padding: 14px 18px;
+    color: #050505;
+    background: #c8ff38;
+    border: 1px solid #dcff7c;
+    border-radius: 10px;
+    box-shadow: 0 12px 36px rgba(0,0,0,.45);
+    font-weight: 800;
+    text-align: center;
+    opacity: 0;
+    transform: translate(-50%, 16px);
+    transition: opacity .2s ease, transform .2s ease;
+}
+.builder-added-toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+@media (max-width: 700px) {
+    .builder-actions {
+        grid-template-columns: 1fr;
+    }
+}
