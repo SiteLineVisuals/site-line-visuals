@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css?v=2026091512">
+    <link rel="stylesheet" href="css/style.css?v=2026091602">
 </head>
 <body>
     <!-- HEADER -->
@@ -119,7 +119,7 @@
                         <li>Selected realtor-ready marketing assets</li>
                     </ul>
                     <div class="best-for">Generally intended for standard homes up to approximately 3,500 sq. ft.</div>
-                    <a href="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec" class="btn btn-primary project-modal-trigger pricing-btn">START EXISTING HOME PROJECT</a>
+                    <button type="button" class="btn btn-primary pricing-btn builder-choice" data-builder-type="package" data-builder-id="existing-home-visual" data-builder-name="Existing Home Visual Package" data-builder-price="1295" data-default-label="ADD EXISTING HOME PACKAGE">ADD EXISTING HOME PACKAGE</button>
                 </div>
 
                 <div class="pricing-card reveal dark-bg featured-card">
@@ -135,7 +135,7 @@
                         <li>Additional finish/product documentation</li>
                         <li>More polished listing presentation</li>
                     </ul>
-                    <a href="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec" class="btn btn-primary project-modal-trigger pricing-btn">START PREMIUM PROJECT</a>
+                    <button type="button" class="btn btn-primary pricing-btn builder-choice" data-builder-type="package" data-builder-id="existing-home-premium" data-builder-name="Premium Realtor / Existing Home" data-builder-price="1795" data-default-label="ADD PREMIUM PACKAGE">ADD PREMIUM PACKAGE</button>
                 </div>
 
                 <div class="pricing-card reveal dark-bg">
@@ -153,14 +153,14 @@
                         <li>High-detail visualization</li>
                         <li>Advanced property presentation</li>
                     </ul>
-                    <a href="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec" class="btn btn-primary project-modal-trigger pricing-btn">REQUEST A CUSTOM QUOTE</a>
+                    <button type="button" class="btn btn-primary pricing-btn builder-choice" data-builder-type="package" data-builder-id="existing-home-luxury" data-builder-name="Luxury / Waterfront / Large Estate" data-builder-price="3500" data-builder-starting="true" data-default-label="ADD LUXURY PACKAGE">ADD LUXURY PACKAGE</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- UPGRADES -->
-    <section class="content-section alt-bg">
+    <section class="content-section alt-bg" id="upgrades">
         <div class="container">
             <div class="upgrade-section reveal">
                 <h3 class="upgrade-title" style="margin-bottom: 40px;">FEATURED UPGRADES</h3>
@@ -171,14 +171,47 @@
                     <p class="rf-upgrade-desc">Many homeowners purchase a property without ever fully seeing the crawlspace or attic. Site Line Visuals can create a navigable 3D/LiDAR visual record of safe and accessible crawlspace and attic areas so the captured space can later be revisited digitally or in compatible VR.</p>
                     <p class="rf-upgrade-desc">This can provide a dated visual reference showing the location and visible condition of: <strong>Plumbing, Ductwork, Insulation, Framing, Mechanical components, Utilities, and Other accessible systems.</strong></p>
                     <p class="rf-upgrade-disclaimer">Documentation represents visible conditions at the time of capture and is not a home inspection, engineering evaluation or guarantee of concealed conditions.</p>
-                    <a href="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec" class="btn btn-primary project-modal-trigger">ADD CRAWLSPACE / ATTIC 3D SCAN</a>
+                    <button type="button" class="btn btn-primary builder-choice" data-builder-type="addon" data-builder-id="existing-crawlspace-attic" data-builder-name="Crawlspace & Attic 3D / LiDAR Scanning" data-builder-price="0" data-builder-quote="true" data-default-label="ADD CRAWLSPACE / ATTIC 3D SCAN">ADD CRAWLSPACE / ATTIC 3D SCAN</button>
                 </div>
 
                 <div>
                     <h4 class="upgrade-item-title">VIRTUAL FURNITURE / STAGING</h4>
                     <p class="upgrade-item-desc">For occupied or vacant listings. Existing furniture and personal contents can be digitally removed and the space can be professionally restaged for presentation.</p>
                     <p class="upgrade-item-desc"><strong class="text-green">$350 to $1,500+</strong>, depending on the number of rooms, style, level of detail, and rendering complexity — confirmed in your written proposal.</p>
+                    <button type="button" class="btn btn-primary builder-choice" data-builder-type="addon" data-builder-id="virtual-staging" data-builder-name="Virtual Furniture / Staging" data-builder-price="350" data-builder-starting="true" data-default-label="ADD VIRTUAL STAGING">ADD VIRTUAL STAGING</button>
                 </div>
+            </div>
+
+            <div class="package-builder-panel reveal" id="package-builder">
+                <div class="package-builder-head">
+                    <div>
+                        <p class="builder-kicker">YOUR BUILD</p>
+                        <h2>EXISTING HOME PACKAGE BUILDER</h2>
+                    </div>
+                    <button type="button" class="builder-clear" id="builderClear">CLEAR</button>
+                </div>
+                <p class="builder-intro">Choose one existing-home package, then add any upgrades. Your selection stays on this device while you continue shopping.</p>
+                <p class="builder-empty" id="builderEmpty">Choose an existing-home package or add-on to begin.</p>
+                <ul class="builder-selections" id="builderSelections"></ul>
+                <div class="builder-total-row">
+                    <span id="builderTotal">Estimated total: $0</span>
+                    <span class="builder-count"><span id="builderCount">0</span> selected</span>
+                </div>
+                <p class="builder-estimate-note" id="builderEstimateNote">This is a planning estimate. Your written proposal will confirm final scope, taxes and price.</p>
+                <div class="builder-payment-box">
+                    <div>
+                        <p class="builder-payment-label">PAYMENT DUE TODAY</p>
+                        <strong class="builder-payment-amount" id="builderPaymentAmount">$0</strong>
+                        <p class="builder-payment-terms" id="builderPaymentTerms">Choose a package to see the payment amount.</p>
+                    </div>
+                    <button type="button" class="btn btn-primary builder-pay-now" id="builderPayNow" disabled aria-disabled="true">PAY NOW</button>
+                </div>
+                <p class="builder-payment-status" id="builderPaymentStatus" hidden></p>
+                <div class="builder-actions">
+                    <button type="button" class="btn btn-outline-green builder-shop-more" id="builderContinueShopping">CONTINUE SHOPPING</button>
+                    <a href="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec?start=1" class="btn btn-primary builder-continue">FINISHED — CONTINUE TO INTAKE</a>
+                </div>
+                <p class="builder-payment-note">The Pay Now button will open a secure Square checkout after the Square account and STCU deposit account are connected. No card or bank information is stored on this website.</p>
             </div>
         </div>
     </section>
@@ -252,5 +285,6 @@
     </footer>
 
     <script src="js/main.js?v=1788111069"></script>
+    <script src="js/package-builder.js?v=2026091604"></script>
 </body>
 </html>
