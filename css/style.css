@@ -4252,3 +4252,19 @@ a.service-card:focus-visible {
         width: 100%;
     }
 }
+
+
+/* Keep the Permanent Visual Record cards inside phone-width viewports. */
+@media (max-width: 768px) {
+  .process-card-box .record-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    width: 100%;
+  }
+
+  .process-card-box .record-step {
+    min-width: 0;
+    width: 100%;
+  }
+}
