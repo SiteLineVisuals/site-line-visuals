@@ -4268,3 +4268,54 @@ a.service-card:focus-visible {
     width: 100%;
   }
 }
+
+
+/* Contain all homepage lower sections within phone-width viewports. */
+@media (max-width: 768px) {
+  .bottom-grid-container {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .bottom-grid-container > *,
+  .bottom-grid-container .card-box,
+  .process-card-box,
+  .audience-card-box,
+  .record-subtitle,
+  .record-step,
+  .t-feat,
+  .t-feat > div,
+  .service-area-map-block {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .bottom-grid-container .card-box {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .audience-icons-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .audience-icons-row .aud-item,
+  .audience-icons-row .aud-item span {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .record-subtitle,
+  .record-step,
+  .t-feat p {
+    overflow-wrap: anywhere;
+  }
+
+  .zip-checker-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    width: 100%;
+  }
+}
