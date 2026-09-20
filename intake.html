@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Start Your Project | Site Line Visuals</title>
+    <meta name="description" content="Start your Site Line Visuals project intake.">
+    <link rel="icon" href="images/logo.png">
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0; width: 100%; height: 100%; background: #070b09; color: #fff; font-family: Inter, Arial, sans-serif; }
+        body { display: flex; flex-direction: column; min-height: 100dvh; }
+        .intake-header { min-height: 62px; padding: max(10px, env(safe-area-inset-top)) 16px 10px; display: flex; align-items: center; justify-content: space-between; gap: 14px; border-bottom: 1px solid rgba(255,255,255,.12); background: #0b100d; }
+        .intake-header img { width: 112px; height: auto; display: block; }
+        .intake-back { color: #b7ff18; text-decoration: none; font-weight: 800; font-size: 15px; white-space: nowrap; }
+        .intake-frame-wrap { flex: 1; min-height: 0; position: relative; background: #fff; }
+        .intake-frame { display: block; width: 100%; height: 100%; min-height: calc(100dvh - 62px - env(safe-area-inset-top)); border: 0; background: #fff; }
+        .intake-fallback { position: absolute; inset: 0; display: grid; place-content: center; gap: 14px; padding: 28px; text-align: center; background: #0b100d; z-index: 0; }
+        .intake-fallback a { color: #b7ff18; font-weight: 800; }
+        .intake-frame { position: relative; z-index: 1; }
+    </style>
+</head>
+<body>
+    <header class="intake-header">
+        <a href="index.html" aria-label="Site Line Visuals home"><img src="images/logo.png" alt="Site Line Visuals"></a>
+        <a class="intake-back" href="packages.html">← Back to Packages</a>
+    </header>
+    <main class="intake-frame-wrap">
+        <div class="intake-fallback">
+            <strong>Loading your project intake…</strong>
+            <a href="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec">Open the intake directly</a>
+        </div>
+        <iframe
+            class="intake-frame"
+            title="Site Line Visuals project intake"
+            src="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec"
+            allow="camera; geolocation"
+            loading="eager">
+        </iframe>
+    </main>
+</body>
+</html>
