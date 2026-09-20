@@ -217,19 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         function openFormNewTab() {
-            if (formWindow && !formWindow.closed) {
-                formWindow.location.href = freshFormUrl();
-                formWindow.focus();
-                return;
-            }
-            formWindow = window.open(freshFormUrl(), "_blank");
-            if (pollTimer) clearInterval(pollTimer);
-            pollTimer = setInterval(function () {
-                if (formWindow && formWindow.closed) {
-                    clearInterval(pollTimer);
-                    showReturnMessage();
-                }
-            }, 500);
+            window.location.href = "intake.html";
         }
 
         projectTriggers.forEach((btn) => {
