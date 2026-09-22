@@ -4,17 +4,33 @@
   var STORAGE_KEY = 'slv-package-build-v1';
   var CHECKOUT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxdfyVzEH4rQ9DJoji-khWjBGFOPi9KXJO91Yjs8beuOJoo_ZjtH3p_YUXi6MG8SnaYbA/exec';
   var PAYABLE_ADDONS = {
-    'room-visualization-4': true,
-    'premium-room-visualization': true,
-    'additional-room': true,
-    'exterior-visualization': true,
+    'alternate-decor-style': true,
+    'additional-room-image': true,
     'interior-exterior-visualization': true,
     'home-intelligence-record': true,
     'home-intelligence-plus': true,
     'model-standard': true,
     'model-detailed': true
   };
+  var VISUALIZATION_ID = 'interior-exterior-visualization';
+  var RETIRED_VISUALIZATION = ['photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
   var state = { package: null, addons: [] };
+
+  function isVisualizationExtra(id) {
+    return id === 'alternate-decor-style' || id === 'additional-room-image';
+  }
+
+  function quantity(item) {
+    return isVisualizationExtra(item.id) ? Math.max(1, Math.floor(Number(item.quantity) || 1)) : 1;
+  }
+
+  function lineTotal(item) { return item.price * quantity(item); }
+
+  function removeAddon(id) {
+    state.addons = state.addons.filter(function (item) {
+      return item.id !== id && !(id === VISUALIZATION_ID && isVisualizationExtra(item.id));
+    });
+  }
 
   function money(value) {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value || 0);
@@ -25,7 +41,24 @@
       var saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
       if (saved && typeof saved === 'object') {
         state.package = saved.package || null;
-        state.addons = Array.isArray(saved.addons) ? saved.addons : [];
+        state.addons = (Array.isArray(saved.addons) ? saved.addons : []).filter(function (item) {
+          return item && RETIRED_VISUALIZATION.indexOf(item.id) === -1;
+        });
+        state.addons.forEach(function (item) {
+          if (item.id === VISUALIZATION_ID) {
+            item.name = 'Interior + Exterior Visualization Package'; item.price = 2995;
+            item.starting = false; item.quote = false;
+          }
+          if (isVisualizationExtra(item.id)) {
+            item.price = item.id === 'alternate-decor-style' ? 250 : 120;
+            item.name = item.id === 'alternate-decor-style' ? 'Alternate Décor Style' : 'Additional Room or Image';
+            item.quantity = item.id === 'alternate-decor-style' ? Math.min(2, quantity(item)) : quantity(item);
+            item.starting = false; item.quote = false;
+          }
+        });
+        if (addonIndex(VISUALIZATION_ID) < 0) {
+          state.addons = state.addons.filter(function (item) { return !isVisualizationExtra(item.id); });
+        }
       }
     } catch (e) {}
   }
@@ -41,7 +74,8 @@
       price: Number(button.dataset.builderPrice || 0),
       starting: button.dataset.builderStarting === 'true',
       quote: button.dataset.builderQuote === 'true',
-      group: button.dataset.builderGroup || ''
+      group: button.dataset.builderGroup || '',
+      quantity: 1
     };
   }
 
@@ -72,9 +106,10 @@
 
   function toggleAddon(button) {
     var item = itemFromButton(button);
+    if (isVisualizationExtra(item.id) && addonIndex(VISUALIZATION_ID) < 0) return;
     var index = addonIndex(item.id);
     if (index >= 0) {
-      state.addons.splice(index, 1);
+      removeAddon(item.id);
     } else {
       if (item.group) {
         state.addons = state.addons.filter(function (existing) { return existing.group !== item.group; });
@@ -86,8 +121,14 @@
   }
 
   function renderLine(item, type) {
-    var price = item.quote ? 'Quote required' : (item.starting ? 'From ' : '') + money(item.price);
-    return '<li><span>' + item.name + '</span><strong>' + price + '</strong>' +
+    var qty = quantity(item);
+    var price = item.quote ? 'Quote required' : (item.starting ? 'From ' : '') + money(lineTotal(item));
+    var controls = isVisualizationExtra(item.id)
+      ? '<span class="builder-quantity"><button type="button" data-quantity-id="' + item.id + '" data-quantity-delta="-1" aria-label="Decrease ' + item.name + '">−</button>' +
+        '<span aria-live="polite">' + qty + '</span>' +
+        '<button type="button" data-quantity-id="' + item.id + '" data-quantity-delta="1" aria-label="Increase ' + item.name + '"' + (item.id === 'alternate-decor-style' && qty >= 2 ? ' disabled' : '') + '>+</button></span>'
+      : '';
+    return '<li><span>' + item.name + (isVisualizationExtra(item.id) ? ' (' + money(item.price) + ' each)' : '') + '</span>' + controls + '<strong>' + price + '</strong>' +
       '<button type="button" class="builder-remove" data-remove-type="' + type + '" data-remove-id="' + item.id + '" aria-label="Remove ' + item.name + '">Remove</button></li>';
   }
 
@@ -101,6 +142,9 @@
 
     document.querySelectorAll('[data-builder-type="addon"]').forEach(function (button) {
       var selected = addonIndex(button.dataset.builderId) >= 0;
+      var needsVisualization = isVisualizationExtra(button.dataset.builderId) && addonIndex(VISUALIZATION_ID) < 0;
+      button.disabled = needsVisualization;
+      button.title = needsVisualization ? 'Add the visualization package first.' : '';
       button.classList.toggle('is-selected', selected);
       button.setAttribute('aria-pressed', selected ? 'true' : 'false');
       var label = button.querySelector('b');
@@ -134,7 +178,7 @@
 
     state.addons.forEach(function (item) {
       html += renderLine(item, 'addon');
-      if (!item.quote) total += item.price;
+      if (!item.quote) total += lineTotal(item);
       hasStarting = hasStarting || item.starting;
       hasQuote = hasQuote || item.quote;
       count += 1;
@@ -149,7 +193,7 @@
     if (countEl) countEl.textContent = count;
 
     var addonsDue = state.addons.reduce(function (sum, item) {
-      return item.quote ? sum : sum + item.price;
+      return item.quote ? sum : sum + lineTotal(item);
     }, 0);
     var isCustom = state.package && state.package.id === 'level-4';
     var paymentDue = state.package ? (isCustom ? 4200 : state.package.price) + addonsDue : 0;
@@ -184,10 +228,21 @@
       return;
     }
 
+    var quantityButton = event.target.closest('[data-quantity-id]');
+    if (quantityButton) {
+      var quantityIndex = addonIndex(quantityButton.dataset.quantityId);
+      if (quantityIndex < 0) return;
+      var quantityItem = state.addons[quantityIndex];
+      var nextQuantity = quantity(quantityItem) + Number(quantityButton.dataset.quantityDelta);
+      if (nextQuantity <= 0) removeAddon(quantityItem.id);
+      else quantityItem.quantity = quantityItem.id === 'alternate-decor-style' ? Math.min(2, nextQuantity) : nextQuantity;
+      saveState(); render(); return;
+    }
+
     var remove = event.target.closest('.builder-remove');
     if (remove) {
       if (remove.dataset.removeType === 'package') state.package = null;
-      else state.addons = state.addons.filter(function (item) { return item.id !== remove.dataset.removeId; });
+      else removeAddon(remove.dataset.removeId);
       saveState();
       render();
       return;
@@ -226,12 +281,17 @@
         package: state.package.id
       });
       if (state.addons.length) {
-        query.set('addons', state.addons.map(function (item) { return item.id; }).join(','));
+        var addonIds = [];
+        state.addons.forEach(function (item) {
+          for (var i = 0; i < quantity(item); i += 1) addonIds.push(item.id);
+        });
+        query.set('addons', addonIds.join(','));
       }
       window.location.assign(CHECKOUT_ENDPOINT + '?' + query.toString());
     }
   });
 
   readState();
+  saveState();
   render();
 })();

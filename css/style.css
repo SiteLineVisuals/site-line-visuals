@@ -4336,3 +4336,9 @@ a.join-role:hover, a.join-role:focus-visible { border-color: var(--primary-green
     width: 100%;
   }
 }
+
+/* Visualization add-on quantities. */
+.builder-quantity { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.builder-quantity button { min-width: 36px; min-height: 36px; border: 1px solid var(--primary-green); border-radius: 6px; color: var(--primary-green); background: transparent; cursor: pointer; font-size: 20px; }
+.builder-quantity button:disabled, .builder-price-choice:disabled { opacity: .5; cursor: not-allowed; }
+.builder-quantity button:focus-visible { outline: 2px solid var(--primary-green); outline-offset: 3px; }
