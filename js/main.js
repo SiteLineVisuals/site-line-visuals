@@ -196,45 +196,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     (function () {
-        const FORM_URL = "https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec";
-        const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
         const projectTriggers = document.querySelectorAll(".project-modal-trigger");
-        const projectIframe = document.querySelector("#projectModal .form-modal-iframe");
-
-        let formWindow = null;
-        let pollTimer = null;
-
-        function showReturnMessage() {
-            const toast = document.createElement("div");
-            toast.textContent = "Thanks for checking out the form! We'll be in touch soon.";
-            toast.style.cssText = "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#151a1e;color:#fff;padding:14px 22px;border-radius:8px;border:1px solid rgba(103,194,32,0.4);font-size:14px;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,0.5);max-width:90vw;text-align:center;";
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 6000);
-        }
-
-        function freshFormUrl() {
-            return FORM_URL + "?start=1&t=" + Date.now();
-        }
-
-        function openFormNewTab() {
-            window.location.href = "intake.html";
-        }
 
         projectTriggers.forEach((btn) => {
             btn.addEventListener("click", function (e) {
                 e.preventDefault();
-                if (!isMobile() && projectModal) {
-                    if (projectIframe) {
-                        projectIframe.style.visibility = "hidden";
-                        projectIframe.addEventListener("load", function revealFreshIntake() {
-                            projectIframe.style.visibility = "visible";
-                        }, { once: true });
-                        projectIframe.src = freshFormUrl();
-                    }
-                    projectModal.open(e);
-                } else {
-                    openFormNewTab();
-                }
+                const label = (btn.textContent || "").toUpperCase();
+                window.location.href = label.includes("CHECKUP")
+                    ? "packages.html#annual-home-checkup"
+                    : "packages.html#package-builder";
             });
         });
     })();
@@ -358,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
         quickNav.innerHTML = [
             '<a href="packages.html">Packages</a>',
             '<a href="examples.html">Examples</a>',
-            '<a href="intake.html">Start Project</a>'
+            '<a href="packages.html#package-builder">Start Project</a>'
         ].join("");
         document.body.appendChild(quickNav);
     }
