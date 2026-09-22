@@ -13,7 +13,7 @@
     'model-detailed': true
   };
   var VISUALIZATION_ID = 'interior-exterior-visualization';
-  var RETIRED_ADDONS = ['home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
+  var RETIRED_ADDONS = ['model-reprint', 'home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
   var state = { package: null, addons: [] };
 
   function isVisualizationExtra(id) {
