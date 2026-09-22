@@ -13,7 +13,7 @@
     'model-detailed': true
   };
   var VISUALIZATION_ID = 'interior-exterior-visualization';
-  var RETIRED_VISUALIZATION = ['photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
+  var RETIRED_ADDONS = ['home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
   var state = { package: null, addons: [] };
 
   function isVisualizationExtra(id) {
@@ -42,9 +42,13 @@
       if (saved && typeof saved === 'object') {
         state.package = saved.package || null;
         state.addons = (Array.isArray(saved.addons) ? saved.addons : []).filter(function (item) {
-          return item && RETIRED_VISUALIZATION.indexOf(item.id) === -1;
+          return item && RETIRED_ADDONS.indexOf(item.id) === -1;
         });
         state.addons.forEach(function (item) {
+          if (item.id === 'annual-home-health-expanded') {
+            item.name = 'Expanded Annual Home Checkup & Maintenance'; item.price = 995;
+            item.starting = false; item.quote = false; item.group = 'annual-checkup';
+          }
           if (item.id === VISUALIZATION_ID) {
             item.name = 'Interior + Exterior Visualization Package'; item.price = 2995;
             item.starting = false; item.quote = false;
