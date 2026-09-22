@@ -2,6 +2,18 @@
   'use strict';
 
   var STORAGE_KEY = 'slv-package-build-v1';
+  var CHECKOUT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxdfyVzEH4rQ9DJoji-khWjBGFOPi9KXJO91Yjs8beuOJoo_ZjtH3p_YUXi6MG8SnaYbA/exec';
+  var PAYABLE_ADDONS = {
+    'room-visualization-4': true,
+    'premium-room-visualization': true,
+    'additional-room': true,
+    'exterior-visualization': true,
+    'interior-exterior-visualization': true,
+    'home-intelligence-record': true,
+    'home-intelligence-plus': true,
+    'model-standard': true,
+    'model-detailed': true
+  };
   var state = { package: null, addons: [] };
 
   function money(value) {
@@ -196,10 +208,27 @@
 
     if (event.target.closest('#builderPayNow')) {
       var status = document.getElementById('builderPaymentStatus');
-      if (status) {
-        status.hidden = false;
-        status.textContent = 'Secure Square checkout is ready to be connected. No payment has been charged.';
+      if (!state.package) return;
+
+      var quoteItems = state.addons.filter(function (item) {
+        return item.quote || item.starting || !PAYABLE_ADDONS[item.id];
+      });
+      if (quoteItems.length) {
+        if (status) {
+          status.hidden = false;
+          status.textContent = 'One or more selected add-ons needs a written quote before payment. Remove the quoted item to check out now, or contact Site Line Visuals for the final total.';
+        }
+        return;
       }
+
+      var query = new URLSearchParams({
+        action: 'checkout',
+        package: state.package.id
+      });
+      if (state.addons.length) {
+        query.set('addons', state.addons.map(function (item) { return item.id; }).join(','));
+      }
+      window.location.assign(CHECKOUT_ENDPOINT + '?' + query.toString());
     }
   });
 
