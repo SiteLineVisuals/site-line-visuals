@@ -420,7 +420,7 @@ img {
 
 .hero-subtitle {
     font-size: 20px;
-    color: var(--text-gray);
+    color: #f1f3f2;
     max-width: 560px;
     margin-bottom: 28px;
 }
@@ -2172,6 +2172,16 @@ a.service-card:focus-visible {
     .hero {
         padding-top: 0 !important;
         padding-bottom: 40px;
+    }
+
+    .hero-overlay {
+        /* Keep the moving clouds visible while protecting text from bright frames. */
+        background: linear-gradient(
+            90deg,
+            rgba(10, 14, 17, 0.82) 0%,
+            rgba(10, 14, 17, 0.68) 60%,
+            rgba(10, 14, 17, 0.48) 100%
+        );
     }
 
     .hero-top-fade {
