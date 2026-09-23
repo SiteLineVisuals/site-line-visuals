@@ -2178,9 +2178,9 @@ a.service-card:focus-visible {
         /* Keep the moving clouds visible while protecting text from bright frames. */
         background: linear-gradient(
             90deg,
-            rgba(10, 14, 17, 0.82) 0%,
-            rgba(10, 14, 17, 0.68) 60%,
-            rgba(10, 14, 17, 0.48) 100%
+            rgba(10, 14, 17, 0.88) 0%,
+            rgba(10, 14, 17, 0.82) 60%,
+            rgba(10, 14, 17, 0.72) 100%
         );
     }
 
