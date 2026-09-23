@@ -1,17 +1,7 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'slv-package-build-v1';
-  var CHECKOUT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxdfyVzEH4rQ9DJoji-khWjBGFOPi9KXJO91Yjs8beuOJoo_ZjtH3p_YUXi6MG8SnaYbA/exec';
-  var PAYABLE_ADDONS = {
-    'alternate-decor-style': true,
-    'additional-room-image': true,
-    'interior-exterior-visualization': true,
-    'home-intelligence-record': true,
-    'home-intelligence-plus': true,
-    'model-standard': true,
-    'model-detailed': true
-  };
+  var STORAGE_KEY = 'slv-package-build-v2';
   var VISUALIZATION_ID = 'interior-exterior-visualization';
   var RETIRED_ADDONS = ['model-reprint', 'home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
   var state = { package: null, addons: [] };
@@ -24,7 +14,6 @@
     return isVisualizationExtra(item.id) ? Math.max(1, Math.floor(Number(item.quantity) || 1)) : 1;
   }
 
-  function lineTotal(item) { return item.price * quantity(item); }
 
   function removeAddon(id) {
     state.addons = state.addons.filter(function (item) {
@@ -32,34 +21,13 @@
     });
   }
 
-  function money(value) {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value || 0);
-  }
 
   function readState() {
     try {
       var saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
       if (saved && typeof saved === 'object') {
         state.package = saved.package || null;
-        state.addons = (Array.isArray(saved.addons) ? saved.addons : []).filter(function (item) {
-          return item && RETIRED_ADDONS.indexOf(item.id) === -1;
-        });
-        state.addons.forEach(function (item) {
-          if (item.id === 'annual-home-health-expanded') {
-            item.name = 'Expanded Annual Home Checkup & Maintenance'; item.price = 995;
-            item.starting = false; item.quote = false; item.group = 'annual-checkup';
-          }
-          if (item.id === VISUALIZATION_ID) {
-            item.name = 'Interior + Exterior Visualization Package'; item.price = 2995;
-            item.starting = false; item.quote = false;
-          }
-          if (isVisualizationExtra(item.id)) {
-            item.price = item.id === 'alternate-decor-style' ? 250 : 120;
-            item.name = item.id === 'alternate-decor-style' ? 'Alternate Décor Style' : 'Additional Room or Image';
-            item.quantity = item.id === 'alternate-decor-style' ? Math.min(2, quantity(item)) : quantity(item);
-            item.starting = false; item.quote = false;
-          }
-        });
+        state.addons = Array.isArray(saved.addons) ? saved.addons : [];
         if (addonIndex(VISUALIZATION_ID) < 0) {
           state.addons = state.addons.filter(function (item) { return !isVisualizationExtra(item.id); });
         }
@@ -75,7 +43,6 @@
     return {
       id: button.dataset.builderId,
       name: button.dataset.builderName,
-      price: Number(button.dataset.builderPrice || 0),
       starting: button.dataset.builderStarting === 'true',
       quote: button.dataset.builderQuote === 'true',
       group: button.dataset.builderGroup || '',
@@ -126,13 +93,12 @@
 
   function renderLine(item, type) {
     var qty = quantity(item);
-    var price = item.quote ? 'Quote required' : (item.starting ? 'From ' : '') + money(lineTotal(item));
     var controls = isVisualizationExtra(item.id)
       ? '<span class="builder-quantity"><button type="button" data-quantity-id="' + item.id + '" data-quantity-delta="-1" aria-label="Decrease ' + item.name + '">−</button>' +
         '<span aria-live="polite">' + qty + '</span>' +
         '<button type="button" data-quantity-id="' + item.id + '" data-quantity-delta="1" aria-label="Increase ' + item.name + '"' + (item.id === 'alternate-decor-style' && qty >= 2 ? ' disabled' : '') + '>+</button></span>'
       : '';
-    return '<li><span>' + item.name + (isVisualizationExtra(item.id) ? ' (' + money(item.price) + ' each)' : '') + '</span>' + controls + '<strong>' + price + '</strong>' +
+    return '<li><span>' + item.name + '</span>' + controls +
       '<button type="button" class="builder-remove" data-remove-type="' + type + '" data-remove-id="' + item.id + '" aria-label="Remove ' + item.name + '">Remove</button></li>';
   }
 
@@ -161,63 +127,30 @@
     var totalEl = document.getElementById('builderTotal');
     var noteEl = document.getElementById('builderEstimateNote');
     var countEl = document.getElementById('builderCount');
-    var paymentAmountEl = document.getElementById('builderPaymentAmount');
-    var paymentTermsEl = document.getElementById('builderPaymentTerms');
     var payButton = document.getElementById('builderPayNow');
     if (!list || !empty || !totalEl) return;
 
     var html = '';
-    var total = 0;
-    var hasStarting = false;
-    var hasQuote = false;
     var count = 0;
 
     if (state.package) {
       html += renderLine(state.package, 'package');
-      if (!state.package.quote) total += state.package.price;
-      hasStarting = hasStarting || state.package.starting;
-      hasQuote = hasQuote || state.package.quote;
       count += 1;
     }
 
     state.addons.forEach(function (item) {
       html += renderLine(item, 'addon');
-      if (!item.quote) total += lineTotal(item);
-      hasStarting = hasStarting || item.starting;
-      hasQuote = hasQuote || item.quote;
       count += 1;
     });
 
     list.innerHTML = html;
     empty.hidden = count > 0;
-    totalEl.textContent = (hasStarting ? 'Starting estimate: ' : 'Estimated total: ') + money(total);
-    noteEl.textContent = hasQuote
-      ? 'One or more selections require a custom quote and are not included in the total.'
-      : 'This is a planning estimate. Your written proposal will confirm final scope, taxes and price.';
+    totalEl.textContent = count ? 'Your selections are ready for a quote' : 'Select services to request a quote';
+    noteEl.textContent = 'We will confirm scope and pricing in a written proposal.';
     if (countEl) countEl.textContent = count;
-
-    var addonsDue = state.addons.reduce(function (sum, item) {
-      return item.quote ? sum : sum + lineTotal(item);
-    }, 0);
-    var isCustom = state.package && state.package.id === 'level-4';
-    var paymentDue = state.package ? (isCustom ? 4200 : state.package.price) + addonsDue : 0;
-
-    if (paymentAmountEl) {
-      paymentAmountEl.textContent = state.package ? money(paymentDue) : '$0';
-    }
-    if (paymentTermsEl) {
-      if (!state.package) {
-        paymentTermsEl.textContent = 'Choose a package to see the payment amount.';
-      } else if (isCustom) {
-        paymentTermsEl.textContent = '$4,200 custom-project deposit (equal to Level 3)' +
-          (addonsDue ? ' plus selected add-ons paid in full.' : '. Final balance is invoiced after the custom scope is approved.');
-      } else {
-        paymentTermsEl.textContent = 'Package and selected add-ons are paid in full.';
-      }
-    }
     if (payButton) {
-      payButton.disabled = !state.package;
-      payButton.setAttribute('aria-disabled', !state.package ? 'true' : 'false');
+      payButton.disabled = !count;
+      payButton.setAttribute('aria-disabled', !count ? 'true' : 'false');
     }
   }
 
@@ -266,32 +199,14 @@
     }
 
     if (event.target.closest('#builderPayNow')) {
-      var status = document.getElementById('builderPaymentStatus');
-      if (!state.package) return;
-
-      var quoteItems = state.addons.filter(function (item) {
-        return item.quote || item.starting || !PAYABLE_ADDONS[item.id];
+      var selected = [];
+      if (state.package) selected.push(state.package.name);
+      state.addons.forEach(function (item) {
+        selected.push(item.name + (isVisualizationExtra(item.id) ? ' x' + quantity(item) : ''));
       });
-      if (quoteItems.length) {
-        if (status) {
-          status.hidden = false;
-          status.textContent = 'One or more selected add-ons needs a written quote before payment. Remove the quoted item to check out now, or contact Site Line Visuals for the final total.';
-        }
-        return;
-      }
-
-      var query = new URLSearchParams({
-        action: 'checkout',
-        package: state.package.id
-      });
-      if (state.addons.length) {
-        var addonIds = [];
-        state.addons.forEach(function (item) {
-          for (var i = 0; i < quantity(item); i += 1) addonIds.push(item.id);
-        });
-        query.set('addons', addonIds.join(','));
-      }
-      window.location.assign(CHECKOUT_ENDPOINT + '?' + query.toString());
+      if (!selected.length) return;
+      window.location.assign('mailto:info@sitelinevisuals3d.com?subject=' + encodeURIComponent('Project quote request') +
+        '&body=' + encodeURIComponent('Please quote these selections:\n' + selected.join('\n')));
     }
   });
 
