@@ -251,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     selected.push({ name: checkbox.dataset.name, price: checkbox.value });
                 }
             });
-            console.log("Realtor quote — selected services:", selected, "Total:", quoteTotalEl ? quoteTotalEl.textContent : "$0");
+            console.log("Realtor quote — selected services:", selected, "Total:", quoteTotalEl ? quoteTotalEl.textContent : "Quote requested");
         });
     }
 
