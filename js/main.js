@@ -201,10 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
         projectTriggers.forEach((btn) => {
             btn.addEventListener("click", function (e) {
                 e.preventDefault();
-                const label = (btn.textContent || "").toUpperCase();
-                window.location.href = label.includes("CHECKUP")
-                    ? "packages.html#annual-home-checkup"
-                    : "packages.html#package-builder";
+                // Temporary test route; restore package selection after testing.
+                window.location.href = "intake.html";
             });
         });
     })();
@@ -328,7 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
         quickNav.innerHTML = [
             '<a href="packages.html">Packages</a>',
             '<a href="examples.html">Examples</a>',
-            '<a href="packages.html#package-builder">Start Project</a>'
+            '<a href="intake.html">Start Project</a>'
         ].join("");
         document.body.appendChild(quickNav);
     }
