@@ -14,7 +14,7 @@ Collect company name, authorized logo file (SVG or transparent PNG preferred), b
 - Obtain approval of a first sample, then check every delivered photo/document/presentation against the approved brand kit, project identity and credit placement.
 
 ## Current implementation
-The contractor page explains the offering and shows illustrative photo, document-cover and presentation-opening layouts. It links to existing intake and email contact.
+The full contractor website is at /builders/, duplicated from the existing 19 public HTML pages with its own copied scripts. Images, CSS and videos are shared unchanged. Navigation stays inside the contractor copy, and the intake points to the same existing backend. /contractors.html redirects to /builders/. The main public website remains unchanged. Builder-focused copy is adapted on the home and services pages; detailed package scope remains unchanged.
 Brand-kit collection and finished-file branding are manual production steps at this stage.
 Automatic branding, persistent brand-kit storage, project-to-builder association, branded exports and phone-app changes are not implemented by this website update. Existing intake, payments and public pages are unchanged.
 
@@ -24,3 +24,6 @@ Automatic branding, persistent brand-kit storage, project-to-builder association
 3. Approve one photo proof, document cover and presentation opening.
 4. Capture and produce using existing operations.
 5. Review original evidence separately; check branded output; deliver approved materials.
+
+## Additional builder requests
+Company-logo/project-address plates for printed models are agreed customizations, not automatic output. Contractor review of thermal records is coordinated manually before routine client delivery; preserve existing delivery obligations. Remote 3D review requires compatible export/viewer/headset and connectivity, not universal or live access. Automatic wall comparison, discrepancy detection and alerts remain development goals, not implemented capabilities.
