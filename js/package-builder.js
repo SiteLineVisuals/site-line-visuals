@@ -4,6 +4,8 @@
   var STORAGE_KEY = 'slv-package-build-v2';
   var VISUALIZATION_ID = 'interior-exterior-visualization';
   var RETIRED_ADDONS = ['model-reprint', 'home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
+  var PRICE_CATALOG = {"documentation-only": {"price": 2495, "starting": false}, "level-1": {"price": 3495, "starting": false}, "level-2": {"price": 5495, "starting": false}, "level-3": {"price": 7495, "starting": false}, "level-4": {"price": 9995, "starting": true}, "interior-exterior-visualization": {"price": 2995, "starting": false}, "alternate-decor-style": {"price": 250, "starting": false}, "additional-room-image": {"price": 120, "starting": false}, "home-intelligence-record": {"price": 995, "starting": false}, "home-intelligence-plus": {"price": 1495, "starting": false}, "annual-home-health-scan": {"price": 495, "starting": true}, "annual-home-health-expanded": {"price": 995, "starting": false}, "model-standard": {"price": 695, "starting": false}, "model-detailed": {"price": 995, "starting": false}, "model-premium": {"price": 1495, "starting": true}, "existing-home-visual": {"price": 1495, "starting": false}, "existing-home-premium": {"price": 2495, "starting": false}, "existing-home-luxury": {"price": 3500, "starting": true}, "existing-crawlspace-attic": {"price": 0, "starting": false}, "virtual-staging": {"price": 350, "starting": true}};
+  function money(n) { return new Intl.NumberFormat("en-US", {style:"currency",currency:"USD",maximumFractionDigits:0}).format(n || 0); }
   var state = { package: null, addons: [] };
 
   function isVisualizationExtra(id) {
@@ -43,6 +45,7 @@
     return {
       id: button.dataset.builderId,
       name: button.dataset.builderName,
+      price: Number(button.dataset.builderPrice || 0),
       starting: button.dataset.builderStarting === 'true',
       quote: button.dataset.builderQuote === 'true',
       group: button.dataset.builderGroup || '',
@@ -56,8 +59,10 @@
 
   function setPackage(button) {
     state.package = itemFromButton(button);
+    if (/existing-home/.test(state.package.id)) state.addons=[];
+    if(state.package.id==="documentation-only") state.addons=state.addons.filter(function(x){return x.id!==VISUALIZATION_ID && !isVisualizationExtra(x.id) && !/^model-/.test(x.id);});
     saveState();
-    render();
+    window.location.assign('customize.html');
   }
 
   function showAddedMessage(name) {
@@ -98,7 +103,7 @@
         '<span aria-live="polite">' + qty + '</span>' +
         '<button type="button" data-quantity-id="' + item.id + '" data-quantity-delta="1" aria-label="Increase ' + item.name + '"' + (item.id === 'alternate-decor-style' && qty >= 2 ? ' disabled' : '') + '>+</button></span>'
       : '';
-    return '<li><span>' + item.name + '</span>' + controls +
+    return '<li><span>' + item.name + ' — ' + (item.starting ? 'from ' : '') + money(item.price * qty) + '</span>' + controls +
       '<button type="button" class="builder-remove" data-remove-type="' + type + '" data-remove-id="' + item.id + '" aria-label="Remove ' + item.name + '">Remove</button></li>';
   }
 
@@ -145,12 +150,12 @@
 
     list.innerHTML = html;
     empty.hidden = count > 0;
-    totalEl.textContent = count ? 'Your selections are ready for a quote' : 'Select services to request a quote';
+    totalEl.textContent = 'Estimated total: ' + money((state.package ? state.package.price : 0) + state.addons.reduce(function(n,x){return n+x.price*quantity(x);},0));
     noteEl.textContent = 'We will confirm scope and pricing in a written proposal.';
     if (countEl) countEl.textContent = count;
     if (payButton) {
-      payButton.disabled = !count;
-      payButton.setAttribute('aria-disabled', !count ? 'true' : 'false');
+      payButton.disabled = !state.package;
+      payButton.setAttribute('aria-disabled', !state.package ? 'true' : 'false');
     }
   }
 
@@ -192,7 +197,7 @@
       return;
     }
 
-    if (event.target.closest('#builderContinueShopping')) {
+    if (event.target.closest('#builderContinueShopping')) { window.location.assign('customize.html'); return;
       var upgrades = document.getElementById('upgrades');
       if (upgrades) upgrades.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
@@ -205,12 +210,24 @@
         selected.push(item.name + (isVisualizationExtra(item.id) ? ' x' + quantity(item) : ''));
       });
       if (!selected.length) return;
-      window.location.assign('mailto:info@sitelinevisuals3d.com?subject=' + encodeURIComponent('Project quote request') +
-        '&body=' + encodeURIComponent('Please quote these selections:\n' + selected.join('\n')));
+      var summary = selected.join('\n');
+      window.location.assign('intake.html?selections=' + encodeURIComponent(summary));
     }
   });
 
   readState();
+  [state.package].concat(state.addons).forEach(function(item){ if(item && PRICE_CATALOG[item.id]) { item.price=PRICE_CATALOG[item.id].price;item.starting=PRICE_CATALOG[item.id].starting; } });
+  if (location.pathname.endsWith('/customize.html')) {
+    if (!state.package) { window.location.replace('packages.html'); return; }
+    var summary=document.getElementById('selectedPackageSummary');
+    if(summary) summary.textContent=state.package.name+' — '+money(state.package.price);
+    if (/existing-home/.test(state.package.id)) {
+      var upgrades=document.getElementById('upgrades');
+      if(upgrades) upgrades.innerHTML='<h2>Existing-Home Options</h2><p>Virtual furniture / staging: $350–$1,500+, depending on scope. Discuss your staging needs in the project details.</p><a href="add-ons.html">View service details</a>';
+    }
+    if(state.package.id==='documentation-only') document.querySelectorAll('[data-builder-id="interior-exterior-visualization"],[data-builder-id="alternate-decor-style"],[data-builder-id="additional-room-image"],[data-builder-id^="model-"]').forEach(function(b){b.closest('li').hidden=true;});
+  }
   saveState();
   render();
 })();
+
