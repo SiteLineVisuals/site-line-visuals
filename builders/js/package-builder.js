@@ -60,7 +60,7 @@
   function setPackage(button) {
     state.package = itemFromButton(button);
     if (/existing-home/.test(state.package.id)) state.addons=[];
-    if(state.package.id==="documentation-only") state.addons=state.addons.filter(function(x){return x.id!==VISUALIZATION_ID && !isVisualizationExtra(x.id) && !/^model-/.test(x.id);});
+    if(state.package.id==="documentation-only") state.addons=state.addons.filter(function(x){return !/^model-/.test(x.id);});
     saveState();
     window.location.assign('customize.html');
   }
@@ -225,7 +225,7 @@
       var upgrades=document.getElementById('upgrades');
       if(upgrades) upgrades.innerHTML='<h2>Existing-Home Options</h2><p>Virtual furniture / staging: $350–$1,500+, depending on scope. Discuss your staging needs in the project details.</p><a href="add-ons.html">View service details</a>';
     }
-    if(state.package.id==='documentation-only') document.querySelectorAll('[data-builder-id="interior-exterior-visualization"],[data-builder-id="alternate-decor-style"],[data-builder-id="additional-room-image"],[data-builder-id^="model-"]').forEach(function(b){b.closest('li').hidden=true;});
+    if(state.package.id==='documentation-only') document.querySelectorAll('[data-builder-id^="model-"]').forEach(function(b){b.closest('li').hidden=true;});
   }
   saveState();
   render();
