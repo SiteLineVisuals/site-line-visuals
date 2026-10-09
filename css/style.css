@@ -4373,3 +4373,17 @@ a.join-role:hover, a.join-role:focus-visible { border-color: var(--primary-green
 .hero-video-feature:hover { border-color:#c1ff67; background:#142e3d; }
 .hero-video-feature:focus-visible { outline:3px solid white; outline-offset:5px; }
 @media(max-width:600px) { .hero-video-feature { flex-direction:column; } .hero-video-preview { width:100%; aspect-ratio:16/9; min-height:0; } .hero-video-preview img { position:absolute; inset:0; } .hero-video-copy { padding:20px; } .hero-video-copy strong { font-size:22px; } }
+
+/* Compact horizontal package rows on construction and existing-home pages. */
+.pricing-grid:has(.package-horizontal) { grid-template-columns:minmax(0,1fr); gap:20px; }
+.pricing-card.package-horizontal { display:grid; grid-template-columns:minmax(210px, .85fr) minmax(0, 2fr); gap:30px; padding:26px; align-items:start; }
+.package-row-summary { min-width:0; }
+.package-row-details { min-width:0; border-left:1px solid #ffffff24; padding-left:28px; }
+.package-horizontal .price { font-size:26px; margin-bottom:14px; }
+.package-horizontal .target-audience { margin-bottom:0; line-height:1.5; }
+.package-horizontal ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:22px; margin-bottom:16px; }
+.package-horizontal ul li { margin-bottom:9px; font-size:14px; }
+.package-horizontal .best-for { margin-bottom:16px; line-height:1.5; }
+.package-horizontal .pricing-btn { margin-top:4px; width:auto; max-width:100%; white-space:normal; }
+@media(max-width:900px) and (min-width:601px) { .pricing-card.package-horizontal { grid-template-columns:minmax(190px,.8fr) minmax(0,1.4fr); gap:20px; padding:22px; } .package-row-details { padding-left:20px; } .package-horizontal ul { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:600px) { .pricing-card.package-horizontal { grid-template-columns:minmax(0,1fr); gap:18px; padding:22px; } .package-row-details { border-left:0; padding-left:0; border-top:1px solid #ffffff24; padding-top:18px; } .package-horizontal ul { grid-template-columns:minmax(0,1fr); } }
