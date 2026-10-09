@@ -3,8 +3,8 @@
 
   var STORAGE_KEY = 'slv-package-build-v2';
   var VISUALIZATION_ID = 'interior-exterior-visualization';
-  var RETIRED_ADDONS = ['model-reprint', 'home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
-  var PRICE_CATALOG = {"documentation-only": {"price": 2495, "starting": false}, "level-1": {"price": 3495, "starting": false}, "level-2": {"price": 5495, "starting": false}, "level-3": {"price": 7495, "starting": false}, "level-4": {"price": 9995, "starting": true}, "interior-exterior-visualization": {"price": 2995, "starting": false}, "alternate-decor-style": {"price": 250, "starting": false}, "additional-room-image": {"price": 120, "starting": false}, "home-intelligence-record": {"price": 995, "starting": false}, "home-intelligence-plus": {"price": 1495, "starting": false}, "annual-home-health-scan": {"price": 495, "starting": true}, "annual-home-health-expanded": {"price": 995, "starting": false}, "model-standard": {"price": 695, "starting": false}, "model-detailed": {"price": 995, "starting": false}, "model-premium": {"price": 1495, "starting": true}, "existing-home-visual": {"price": 1495, "starting": false}, "existing-home-premium": {"price": 2495, "starting": false}, "existing-home-luxury": {"price": 3500, "starting": true}, "existing-crawlspace-attic": {"price": 0, "starting": false}, "virtual-staging": {"price": 350, "starting": true}};
+  var RETIRED_ADDONS = ['existing-crawlspace-attic', 'model-reprint', 'home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
+  var PRICE_CATALOG = {"documentation-only": {"price": 2495, "starting": false}, "level-1": {"price": 3495, "starting": false}, "level-2": {"price": 5495, "starting": false}, "level-3": {"price": 7495, "starting": false}, "level-4": {"price": 9995, "starting": true}, "interior-exterior-visualization": {"price": 2995, "starting": false}, "alternate-decor-style": {"price": 250, "starting": false}, "additional-room-image": {"price": 120, "starting": false}, "home-intelligence-record": {"price": 995, "starting": false}, "home-intelligence-plus": {"price": 1495, "starting": false}, "annual-home-health-scan": {"price": 495, "starting": true}, "annual-home-health-expanded": {"price": 995, "starting": false}, "model-standard": {"price": 695, "starting": false}, "model-detailed": {"price": 995, "starting": false}, "model-premium": {"price": 1495, "starting": true}, "existing-home-visual": {"price": 1495, "starting": false}, "existing-home-premium": {"price": 2495, "starting": false}, "existing-home-luxury": {"price": 3500, "starting": true}, "virtual-staging": {"price": 350, "starting": true}};
   function money(n) { return new Intl.NumberFormat("en-US", {style:"currency",currency:"USD",maximumFractionDigits:0}).format(n || 0); }
   var state = { package: null, addons: [] };
 
@@ -29,7 +29,7 @@
       var saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
       if (saved && typeof saved === 'object') {
         state.package = saved.package || null;
-        state.addons = Array.isArray(saved.addons) ? saved.addons : [];
+        state.addons = (Array.isArray(saved.addons) ? saved.addons : []).filter(function(item){return item && RETIRED_ADDONS.indexOf(item.id) === -1;});
         if (addonIndex(VISUALIZATION_ID) < 0) {
           state.addons = state.addons.filter(function (item) { return !isVisualizationExtra(item.id); });
         }
