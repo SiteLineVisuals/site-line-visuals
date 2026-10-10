@@ -127,6 +127,8 @@
       else button.textContent = selected ? 'ADDED ✓' : (button.dataset.defaultLabel || 'ADD');
     });
 
+    var summary = document.getElementById('selectedPackageSummary');
+    if(summary) summary.textContent = state.package ? state.package.name + ' — ' + (state.package.quote ? 'Custom quote' : (state.package.starting ? 'From ' : '') + money(state.package.price || 0)) : 'Choose a package to begin.';
     var list = document.getElementById('builderSelections');
     var empty = document.getElementById('builderEmpty');
     var totalEl = document.getElementById('builderTotal');
@@ -220,5 +222,6 @@
   saveState();
   render();
 })();
+
 
 
