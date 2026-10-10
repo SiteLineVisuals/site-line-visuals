@@ -55,6 +55,15 @@
 .process-card-box .record-step-link{grid-column:3;grid-row:2}
 @media(max-width:600px){.process-card-box .record-step{grid-template-columns:1fr!important}.process-card-box .record-stage-visual,.process-card-box .record-step h4,.process-card-box .record-step p,.process-card-box .record-step-link{grid-column:1;grid-row:auto}}
 </style>
+<style id="compact-stage-cards">
+.process-card-box a.record-step{display:grid!important;grid-template-columns:200px minmax(0,1fr)!important;grid-template-rows:auto auto auto!important;gap:8px 24px!important;align-items:start!important;padding:18px!important;min-height:0!important;height:auto!important}
+.process-card-box a.record-step .record-stage-visual{grid-column:1!important;grid-row:1 / span 3!important;align-self:start!important;margin:0!important;width:200px!important;height:auto!important}
+.process-card-box a.record-step .record-stage-visual img{position:static!important;display:block!important;width:200px!important;height:125px!important;min-height:0!important;max-height:125px!important;aspect-ratio:8/5!important;object-fit:cover!important;border-radius:8px}
+.process-card-box a.record-step h4{grid-column:2!important;grid-row:1!important;position:static!important;margin:0!important}
+.process-card-box a.record-step p{grid-column:2!important;grid-row:2!important;position:static!important;margin:0!important}
+.process-card-box a.record-step .record-step-link{grid-column:2!important;grid-row:3!important;position:static!important;margin:0!important}
+@media(max-width:600px){.process-card-box a.record-step{grid-template-columns:110px minmax(0,1fr)!important;gap:8px 14px!important}.process-card-box a.record-step .record-stage-visual{width:110px!important}.process-card-box a.record-step .record-stage-visual img{width:110px!important;height:75px!important;max-height:75px!important}}
+</style>
 </head>
 <body>
 <!-- HEADER -->
