@@ -1,474 +1,346 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packages & Services | Site Line Visuals</title>
-    <meta name="description" content="Construction documentation, 3D/VR visualization, LiDAR, thermal, drone, and existing-home packages from Site Line Visuals.">
-    <link rel="canonical" href="https://sitelinevisuals.com/packages.html">
-    <link rel="icon" href="images/logo.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/style.css?v=home-care-20260922">
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Packages &amp; Services | Site Line Visuals</title>
+<meta content="Construction documentation, 3D/VR visualization, LiDAR, thermal, drone, and existing-home packages from Site Line Visuals." name="description"/>
+<link href="https://sitelinevisuals.com/packages.html" rel="canonical"/>
+<link href="images/logo.png" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css?v=home-care-20260922" rel="stylesheet"/>
+<style>
+.pricing-grid:has(.package-horizontal){display:grid;grid-template-columns:1fr!important;gap:22px}
+.pricing-card.package-horizontal{display:grid!important;grid-template-columns:minmax(220px,.85fr) minmax(0,2fr);gap:28px;height:auto!important;min-width:0;padding:26px}
+.package-row-summary,.package-row-details{min-width:0;overflow-wrap:break-word}
+.package-row-details{border-left:1px solid #ffffff26;padding-left:28px}
+.package-row-details ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px}
+.package-row-details .pricing-btn{width:auto;max-width:100%;margin-top:18px}
+.upgrade-grid{display:grid!important;grid-template-columns:1fr!important;gap:24px}
+.upgrade-grid>.addon-horizontal{display:grid;grid-template-columns:minmax(220px,.85fr) minmax(0,2fr);gap:28px;padding:24px;border:1px solid #ffffff26;border-radius:10px;min-width:0;height:auto}
+.addon-row-summary,.addon-row-details{min-width:0;overflow-wrap:break-word}
+.addon-row-details{border-left:1px solid #ffffff26;padding-left:28px}
+@media(max-width:850px){.package-row-details ul{grid-template-columns:1fr}}
+@media(max-width:600px){.pricing-card.package-horizontal,.upgrade-grid>.addon-horizontal{grid-template-columns:1fr;gap:16px;padding:20px}.package-row-details,.addon-row-details{border-left:0;border-top:1px solid #ffffff26;padding:16px 0 0}}
+</style></head>
 <body>
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container header-inner">
+<!-- HEADER -->
+<header class="header">
+<div class="container header-inner">
+<!-- Logo -->
+<a class="logo" href="index.html">
+<img alt="Site Line Visuals" height="120" src="images/logo.png"/>
+</a>
+<!-- Navigation -->
+<nav class="main-nav" id="mainNav">
+<ul class="nav-list">
+<li><a href="index.html">HOME</a></li>
+<li><a href="about.html">ABOUT</a></li>
+<!-- SERVICES dropdown -->
+<li class="has-dropdown">
+<a class="dropdown-toggle" href="services.html">SERVICES <span class="arrow">▼</span></a>
+<ul class="dropdown-menu">
+<li><a href="services.html#3d-models">3D Models</a></li>
+<li><a href="services.html#vr-walkthroughs">VR Walkthroughs</a></li>
+<li><a href="services.html#drone-imagery">Drone Imagery</a></li>
+<li><a href="services.html#thermal-imaging">Thermal Imaging</a></li>
+<li><a href="services.html#lidar-3d-scanning">LiDAR &amp; 3D Scanning</a></li>
+<li><a href="services.html#photorealistic-visualization">Photorealistic Visualization</a></li>
+</ul>
+</li>
+<!-- PACKAGES & PRICING dropdown -->
+<li class="has-dropdown">
+<a class="active dropdown-toggle" href="packages.html">PACKAGES &amp; PRICING <span class="arrow">▼</span></a>
+<ul class="dropdown-menu">
+<li><a href="packages.html#new-construction">New Construction Packages</a></li>
+<li><a href="realtor.html#pricing">Realtor / Existing Home Packages</a></li>
+<li><a href="packages.html#upgrades">Upgrades &amp; Add-Ons</a></li>
+<li><a href="packages.html#compare">Compare Packages</a></li>
+</ul>
+</li>
+<li><a href="realtor.html">REALTOR / EXISTING HOME</a></li>
+<!-- OUR PROCESS dropdown -->
+<li class="has-dropdown">
+<a class="dropdown-toggle" href="our-process.html">OUR PROCESS <span class="arrow">▼</span></a>
+<ul class="dropdown-menu">
+<li><a href="our-process.html#how-it-works">How It Works</a></li>
+<li><a href="our-process.html#journey">Project Timeline</a></li>
+<li><a href="our-process.html#deliverables">Deliverables</a></li>
+<li><a href="our-process.html#technology">Technology</a></li>
+</ul>
+</li>
+<li><a href="examples.html">EXAMPLES</a></li>
+<!-- RESOURCES dropdown -->
+<li class="has-dropdown">
+<a class="dropdown-toggle" href="resources.html">RESOURCES <span class="arrow">▼</span></a>
+<ul class="dropdown-menu">
+<li><a href="resources.html#photo-guides">Photo Guides</a></li>
+<li><a href="resources.html#faq">FAQ</a></li>
+</ul>
+</li>
+<li><a href="contact.html">CONTACT</a></li>
+</ul>
+</nav>
+<button aria-expanded="false" aria-label="Toggle menu" class="hamburger" id="hamburgerBtn">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</header>
+<!-- Overlay for mobile menu -->
+<div class="nav-overlay" id="navOverlay"></div>
+<!-- PAGE HERO -->
+<section class="page-hero">
+<div class="container packages-hero-container">
+<h1 class="packages-hero-title">PACKAGES &amp; PRICING</h1>
+<p class="packages-hero-desc">Choose documentation by itself or combine it with preconstruction visualization. Whether the home is an established home plan, a custom design, an active construction project, or an existing property, Site Line Visuals creates an organized record built around the project.</p>
+<div class="packages-hero-buttons">
+<a class="btn btn-outline-green" href="#documentation-only">DOCUMENTATION ONLY</a>
+<a class="btn btn-outline-green" href="#new-construction">NEW CONSTRUCTION</a>
+<a class="btn btn-outline-green" href="customize.html">VIEW ADD-ON OPTIONS</a>
+<a class="btn btn-outline-green" href="realtor.html">REALTOR / EXISTING HOME</a>
+</div>
+</div>
+</section>
+<!-- NEW CONSTRUCTION SECTION -->
+<section class="content-section" id="new-construction">
+<div class="container">
+<h2 class="section-heading packages-section-heading">NEW CONSTRUCTION PACKAGES</h2>
+<div class="pricing-grid">
+<!-- DOCUMENTATION ONLY -->
+<div class="pricing-card reveal featured-card package-horizontal" id="documentation-only"><div class="package-row-summary">
+<p class="pricing-card-highlight">NO 3D DESIGN OR VR REQUIRED</p>
+<h3>Construction Documentation</h3>
+<div class="price">Price on request</div>
+<div class="target-audience">For builders, contractors and homeowners who already understand the finished design and want the construction documented.</div>
 
-            <!-- Logo -->
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Site Line Visuals" height="120">
-            </a>
 
-            <!-- Navigation -->
-            <nav class="main-nav" id="mainNav">
-                <ul class="nav-list">
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
 
-                    <!-- SERVICES dropdown -->
-                    <li class="has-dropdown">
-                        <a href="services.html" class="dropdown-toggle">SERVICES <span class="arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="services.html#3d-models">3D Models</a></li>
-                            <li><a href="services.html#vr-walkthroughs">VR Walkthroughs</a></li>
-                            <li><a href="services.html#drone-imagery">Drone Imagery</a></li>
-                            <li><a href="services.html#thermal-imaging">Thermal Imaging</a></li>
-                            <li><a href="services.html#lidar-3d-scanning">LiDAR & 3D Scanning</a></li>
-                            <li><a href="services.html#photorealistic-visualization">Photorealistic Visualization</a></li>
-                        </ul>
-                    </li>
+</div><div class="package-row-details"><ul>
+<li>Complimentary Site Verification outside the three-visit allowance</li>
+<li>3 scheduled construction-documentation visits</li>
+<li>Interior underground plumbing capture when applicable</li>
+<li>Combined framing, electrical, plumbing and HVAC rough-in documentation</li>
+<li>Final interior and exterior thermal reference capture</li>
+<li>Accessible crawlspace and attic documentation at final</li>
+<li>Drone/site imagery when safe, legal and conditions permit</li>
+<li>Organized permanent Digital Home Record</li>
+<li>Eligible for Home Intelligence and Annual Home Checkup upgrades</li>
+</ul><div class="best-for">Best For: Established designs, repeat plans and builders who already provide a model home or their own visualization. Does not include blueprint-to-3D modeling, designed imagery, preconstruction VR or a guided VR walkthrough. Additional authorized construction visits are priced by proposal.</div><button class="btn btn-primary pricing-btn builder-choice" data-builder-id="documentation-only" data-builder-name="Construction Documentation" data-builder-type="package" data-default-label="ADD DOCUMENTATION TO BUILD" type="button">ADD DOCUMENTATION TO BUILD</button></div></div>
+<!-- LEVEL 1 -->
+<div class="pricing-card reveal package-horizontal"><div class="package-row-summary">
+<h3>Level 1 - Visual Build Package</h3>
+<div class="price">Price on request</div>
+<div class="target-audience">For homeowners and builders who want to experience the home before construction and document the most important early stages.</div>
 
-                    <!-- PACKAGES & PRICING dropdown -->
-                    <li class="has-dropdown">
-                        <a href="packages.html" class="active dropdown-toggle">PACKAGES & PRICING <span class="arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="packages.html#new-construction">New Construction Packages</a></li>
-                            <li><a href="realtor.html#pricing">Realtor / Existing Home Packages</a></li>
-                            <li><a href="packages.html#upgrades">Upgrades & Add-Ons</a></li>
-                            <li><a href="packages.html#compare">Compare Packages</a></li>
-                        </ul>
-                    </li>
 
-                    <li><a href="realtor.html">REALTOR / EXISTING HOME</a></li>
 
-                    <!-- OUR PROCESS dropdown -->
-                    <li class="has-dropdown">
-                        <a href="our-process.html" class="dropdown-toggle">OUR PROCESS <span class="arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="our-process.html#how-it-works">How It Works</a></li>
-                            <li><a href="our-process.html#journey">Project Timeline</a></li>
-                            <li><a href="our-process.html#deliverables">Deliverables</a></li>
-                            <li><a href="our-process.html#technology">Technology</a></li>
-                        </ul>
-                    </li>
+</div><div class="package-row-details"><ul>
+<li>Blueprint-to-3D model preparation</li>
+<li>Interior and exterior walkthrough capability</li>
+<li>Full-scale VR-ready lot experience</li>
+<li>Up to 3 scheduled site visits</li>
+<li>Construction documentation at selected milestones</li>
+<li>Framing, visible mechanicals and utility documentation when applicable</li>
+<li>Thermal documentation at the appropriate stage</li>
+<li>Drone/progress imagery when conditions permit</li>
+<li>Organized permanent project record</li>
+</ul><div class="best-for">Best For: Essential visualization + milestone documentation. Standard base pricing applies to a residential project up to approximately 2,500 sq. ft.</div><button class="btn btn-primary pricing-btn builder-choice" data-builder-id="level-1" data-builder-name="Level 1 - Visual Build Package" data-builder-type="package" data-default-label="ADD LEVEL 1 TO BUILD" type="button">ADD LEVEL 1 TO BUILD</button></div></div>
+<!-- LEVEL 2 -->
+<div class="pricing-card reveal featured-card package-horizontal"><div class="package-row-summary">
+<h3>Level 2 - Project Monitoring</h3>
+<div class="price">Price on request</div>
+<div class="target-audience">For homeowners, investors and remote clients who want continued visibility during construction.</div>
+<p class="pricing-card-highlight">Includes everything in Level 1, plus:</p>
 
-                    <li><a href="examples.html">EXAMPLES</a></li>
 
-                    <!-- RESOURCES dropdown -->
-                    <li class="has-dropdown">
-                        <a href="resources.html" class="dropdown-toggle">RESOURCES <span class="arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="resources.html#photo-guides">Photo Guides</a></li>
-                            <li><a href="resources.html#faq">FAQ</a></li>
-                        </ul>
-                    </li>
 
-                    <li><a href="contact.html">CONTACT</a></li>
-                </ul>
+</div><div class="package-row-details"><ul>
+<li>Up to 6 scheduled site visits</li>
+<li>Expanded progress scanning</li>
+<li>Additional milestone documentation</li>
+<li>Thermal, drone, walkthrough and hidden-system capture at selected stages</li>
+<li>Crawlspace documentation when applicable</li>
+<li>Expanding construction memory archive</li>
+<li>Remote project visibility</li>
+</ul><div class="best-for">Best For: Continued oversight throughout the build</div><button class="btn btn-primary pricing-btn builder-choice" data-builder-id="level-2" data-builder-name="Level 2 - Project Monitoring" data-builder-type="package" data-default-label="ADD LEVEL 2 TO BUILD" type="button">ADD LEVEL 2 TO BUILD</button></div></div>
+<!-- LEVEL 3 -->
+<div class="pricing-card reveal package-horizontal"><div class="package-row-summary">
+<h3>Level 3 - Active Build Monitoring</h3>
+<div class="price">Price on request</div>
+<div class="target-audience">For clients who want frequent documentation and a much more complete visual history of construction.</div>
+<p class="pricing-card-highlight">Includes everything in the visualization foundation, plus:</p>
 
-                
-            </nav>
 
-            
 
-            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+</div><div class="package-row-details"><ul>
+<li>Up to 12 scheduled site visits</li>
+<li>Frequent construction progress capture</li>
+<li>3D/LiDAR documentation</li>
+<li>Thermal imaging at appropriate stages</li>
+<li>Drone progress imagery</li>
+<li>Framing, mechanical, utility and insulation documentation</li>
+<li>Crawlspace and accessible attic documentation</li>
+<li>Finish-stage and major milestone capture</li>
+<li>Expanded permanent 3D Construction Record</li>
+</ul><div class="best-for">Best For: High-visibility construction documentation</div><button class="btn btn-primary pricing-btn builder-choice" data-builder-id="level-3" data-builder-name="Level 3 - Active Build Monitoring" data-builder-type="package" data-default-label="ADD LEVEL 3 TO BUILD" type="button">ADD LEVEL 3 TO BUILD</button></div></div>
+<!-- LEVEL 4 -->
+<div class="pricing-card reveal package-horizontal"><div class="package-row-summary">
+<h3>Level 4 - Full Visibility</h3>
+<div class="price price-text">Price on request</div>
+<div class="target-audience">For luxury homes, large custom projects, multiple structures, complex sites or projects requiring a custom capture schedule.</div>
+<p class="pricing-card-highlight">May include:</p>
 
-        </div>
-    </header>
 
-    <!-- Overlay for mobile menu -->
-    <div class="nav-overlay" id="navOverlay"></div>
 
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-        <div class="container packages-hero-container">
-            <h1 class="packages-hero-title">PACKAGES & PRICING</h1>
-            <p class="packages-hero-desc">Choose documentation by itself or combine it with preconstruction visualization. Whether the home is an established home plan, a custom design, an active construction project, or an existing property, Site Line Visuals creates an organized record built around the project.</p>
+</div><div class="package-row-details"><ul>
+<li>Multiple visits per week</li>
+<li>Expanded LiDAR/3D scanning</li>
+<li>Thermal documentation</li>
+<li>Drone imagery</li>
+<li>Crawlspace and attic scanning</li>
+<li>Advanced visualization</li>
+<li>High-end photorealistic imagery</li>
+<li>Custom reporting and project-team access</li>
+</ul><div class="best-for">Best For: Complex &amp; Luxury Builds. Scope and price depend on size, duration, travel, access, capture frequency, production complexity, storage, and delivery.</div><button class="btn btn-primary pricing-btn builder-choice" data-builder-id="level-4" data-builder-name="Level 4 - Full Visibility" data-builder-type="package" data-default-label="ADD CUSTOM QUOTE TO BUILD" type="button">ADD CUSTOM QUOTE TO BUILD</button></div></div>
+</div>
+<!-- NEW CONSTRUCTION UPGRADES -->
 
-            <div class="packages-hero-buttons">
-                <a href="#documentation-only" class="btn btn-outline-green">DOCUMENTATION ONLY</a>
-                <a href="#new-construction" class="btn btn-outline-green">NEW CONSTRUCTION</a>
-                <a href="#upgrades" class="btn btn-outline-green">VIEW ADD-ON OPTIONS</a>
-                <a href="realtor.html" class="btn btn-outline-green">REALTOR / EXISTING HOME</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- NEW CONSTRUCTION SECTION -->
-    <section class="content-section" id="new-construction">
-        <div class="container">
-            <h2 class="section-heading packages-section-heading">NEW CONSTRUCTION PACKAGES</h2>
-            
-            <div class="pricing-grid">
-                <!-- DOCUMENTATION ONLY -->
-                <div class="pricing-card reveal featured-card" id="documentation-only">
-                    <p class="pricing-card-highlight">NO 3D DESIGN OR VR REQUIRED</p>
-                    <h3>Construction Documentation</h3>
-                    <div class="price">Price on request</div>
-                    <div class="target-audience">For builders, contractors and homeowners who already understand the finished design and want the construction documented.</div>
-                    <ul>
-                        <li>Complimentary Site Verification outside the three-visit allowance</li>
-                        <li>3 scheduled construction-documentation visits</li>
-                        <li>Interior underground plumbing capture when applicable</li>
-                        <li>Combined framing, electrical, plumbing and HVAC rough-in documentation</li>
-                        <li>Final interior and exterior thermal reference capture</li>
-                        <li>Accessible crawlspace and attic documentation at final</li>
-                        <li>Drone/site imagery when safe, legal and conditions permit</li>
-                        <li>Organized permanent Digital Home Record</li>
-                        <li>Eligible for Home Intelligence and Annual Home Checkup upgrades</li>
-                    </ul>
-                    <div class="best-for">Best For: Established designs, repeat plans and builders who already provide a model home or their own visualization. Does not include blueprint-to-3D modeling, designed imagery, preconstruction VR or a guided VR walkthrough. Additional authorized construction visits are priced by proposal.</div>
-                    <button type="button" class="btn btn-primary pricing-btn builder-choice" data-builder-type="package" data-builder-id="documentation-only" data-builder-name="Construction Documentation" data-default-label="ADD DOCUMENTATION TO BUILD">ADD DOCUMENTATION TO BUILD</button>
-                </div>
-
-                <!-- LEVEL 1 -->
-                <div class="pricing-card reveal">
-                    <h3>Level 1 - Visual Build Package</h3>
-                    <div class="price">Price on request</div>
-                    <div class="target-audience">For homeowners and builders who want to experience the home before construction and document the most important early stages.</div>
-                    <ul>
-                        <li>Blueprint-to-3D model preparation</li>
-                        <li>Interior and exterior walkthrough capability</li>
-                        <li>Full-scale VR-ready lot experience</li>
-                        <li>Up to 3 scheduled site visits</li>
-                        <li>Construction documentation at selected milestones</li>
-                        <li>Framing, visible mechanicals and utility documentation when applicable</li>
-                        <li>Thermal documentation at the appropriate stage</li>
-                        <li>Drone/progress imagery when conditions permit</li>
-                        <li>Organized permanent project record</li>
-                    </ul>
-                    <div class="best-for">Best For: Essential visualization + milestone documentation. Standard base pricing applies to a residential project up to approximately 2,500 sq. ft.</div>
-                    <button type="button" class="btn btn-primary pricing-btn builder-choice" data-builder-type="package" data-builder-id="level-1" data-builder-name="Level 1 - Visual Build Package" data-default-label="ADD LEVEL 1 TO BUILD">ADD LEVEL 1 TO BUILD</button>
-                </div>
-
-                <!-- LEVEL 2 -->
-                <div class="pricing-card reveal featured-card">
-                    <h3>Level 2 - Project Monitoring</h3>
-                    <div class="price">Price on request</div>
-                    <div class="target-audience">For homeowners, investors and remote clients who want continued visibility during construction.</div>
-                    <p class="pricing-card-highlight">Includes everything in Level 1, plus:</p>
-                    <ul>
-                        <li>Up to 6 scheduled site visits</li>
-                        <li>Expanded progress scanning</li>
-                        <li>Additional milestone documentation</li>
-                        <li>Thermal, drone, walkthrough and hidden-system capture at selected stages</li>
-                        <li>Crawlspace documentation when applicable</li>
-                        <li>Expanding construction memory archive</li>
-                        <li>Remote project visibility</li>
-                    </ul>
-                    <div class="best-for">Best For: Continued oversight throughout the build</div>
-                    <button type="button" class="btn btn-primary pricing-btn builder-choice" data-builder-type="package" data-builder-id="level-2" data-builder-name="Level 2 - Project Monitoring" data-default-label="ADD LEVEL 2 TO BUILD">ADD LEVEL 2 TO BUILD</button>
-                </div>
-
-                <!-- LEVEL 3 -->
-                <div class="pricing-card reveal">
-                    <h3>Level 3 - Active Build Monitoring</h3>
-                    <div class="price">Price on request</div>
-                    <div class="target-audience">For clients who want frequent documentation and a much more complete visual history of construction.</div>
-                    <p class="pricing-card-highlight">Includes everything in the visualization foundation, plus:</p>
-                    <ul>
-                        <li>Up to 12 scheduled site visits</li>
-                        <li>Frequent construction progress capture</li>
-                        <li>3D/LiDAR documentation</li>
-                        <li>Thermal imaging at appropriate stages</li>
-                        <li>Drone progress imagery</li>
-                        <li>Framing, mechanical, utility and insulation documentation</li>
-                        <li>Crawlspace and accessible attic documentation</li>
-                        <li>Finish-stage and major milestone capture</li>
-                        <li>Expanded permanent 3D Construction Record</li>
-                    </ul>
-                    <div class="best-for">Best For: High-visibility construction documentation</div>
-                    <button type="button" class="btn btn-primary pricing-btn builder-choice" data-builder-type="package" data-builder-id="level-3" data-builder-name="Level 3 - Active Build Monitoring" data-default-label="ADD LEVEL 3 TO BUILD">ADD LEVEL 3 TO BUILD</button>
-                </div>
-
-                <!-- LEVEL 4 -->
-                <div class="pricing-card reveal">
-                    <h3>Level 4 - Full Visibility</h3>
-                    <div class="price price-text">Price on request</div>
-                    <div class="target-audience">For luxury homes, large custom projects, multiple structures, complex sites or projects requiring a custom capture schedule.</div>
-                    <p class="pricing-card-highlight">May include:</p>
-                    <ul>
-                        <li>Multiple visits per week</li>
-                        <li>Expanded LiDAR/3D scanning</li>
-                        <li>Thermal documentation</li>
-                        <li>Drone imagery</li>
-                        <li>Crawlspace and attic scanning</li>
-                        <li>Advanced visualization</li>
-                        <li>High-end photorealistic imagery</li>
-                        <li>Custom reporting and project-team access</li>
-                    </ul>
-                    <div class="best-for">Best For: Complex & Luxury Builds. Scope and price depend on size, duration, travel, access, capture frequency, production complexity, storage, and delivery.</div>
-                    <button type="button" class="btn btn-primary pricing-btn builder-choice" data-builder-type="package" data-builder-id="level-4" data-builder-name="Level 4 - Full Visibility"   data-default-label="ADD CUSTOM QUOTE TO BUILD">ADD CUSTOM QUOTE TO BUILD</button>
-                </div>
-            </div>
-
-            <!-- NEW CONSTRUCTION UPGRADES -->
-            <div class="upgrade-section" id="upgrades">
-                <h3 class="upgrade-title">NEW CONSTRUCTION UPGRADES</h3>
-                <p class="upgrade-subtitle">MAKE YOUR PROJECT EVEN MORE VISIBLE</p>
-                <p style="text-align: center; color: var(--text-gray); margin: -20px auto 30px; max-width: 780px;">Explore the options below and add the ones you want to your build. An approved Site Line Visuals salesperson will review your selections, confirm what fits your project, and provide a written quote. <a href="add-ons.html" class="text-green">See full add-on details</a>.</p>
-                <p style="text-align: center; color: var(--text-gray); margin: -20px auto 30px; max-width: 780px;">Crawlspace and attic documentation follows the standard Site Line capture protocol for qualifying new-construction packages. It is not sold here as a separate new-construction add-on.</p>
-                
-                <div class="upgrade-grid">
-                    <div>
-                        <h4 class="upgrade-item-title">INTERIOR + EXTERIOR VISUALIZATION</h4>
-                        <p class="upgrade-item-desc">Walk through your planned home online and see it styled your way.</p>
-                        <ul class="upgrade-list builder-price-list">
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="interior-exterior-visualization" data-builder-name="Interior + Exterior Visualization Package" data-default-label="ADD"><span><strong class="text-green">Visualization Package — Price on request</strong><br>Online walkthrough, up to 6 interior rooms with one finished image each, and 4 exterior images. Your first décor style follows your intake photos and preferences.</span><b>ADD</b></button></li>
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="alternate-decor-style" data-builder-name="Alternate Décor Style" data-builder-quantity="true" data-builder-max="2" data-default-label="ADD"><span><strong class="text-green">Alternate Décor Style — priced by proposal</strong><br>Try a different look in your interior images. Up to 2 additional styles; flat price per change.</span><b>ADD</b></button></li>
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="additional-room-image" data-builder-name="Additional Room or Image" data-builder-quantity="true" data-default-label="ADD"><span><strong class="text-green">Additional Room or Image — priced by proposal</strong><br>An added room includes one finished image. An extra viewpoint is also quoted in your proposal.</span><b>ADD</b></button></li>
-                        </ul>
-                        <p class="upgrade-item-desc">Add the visualization package first, then adjust extra quantities in your build below.</p>
-                        <p style="font-size: 12px; color: #7c8790; font-style: italic;">Décor changes cover furnishings, accessories and wall colors—not changes to the home’s layout or built-in features. Production errors are corrected at no charge.</p>
-                        <a href="add-ons.html#photorealistic-visualization" class="btn btn-outline-green">LEARN MORE</a>
-                    </div>
-                    <div id="home-intelligence-upgrade">
-                        <h4 class="upgrade-item-title">HOME INTELLIGENCE — YOUR HOME'S KNOWLEDGE RECORD</h4>
-                        <p class="upgrade-item-desc">Give your completed home an organized, searchable knowledge record. Site Line documents qualifying equipment, appliances, finishes and ownership information so important details are easier to find after construction.</p>
-                        <ul class="upgrade-list builder-price-list">
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="home-intelligence-record" data-builder-name="Home Intelligence Record" data-builder-group="home-intelligence" data-default-label="ADD"><span><strong class="text-green">Home Intelligence Record:</strong> quoted by project — equipment and appliance register, model and serial documentation, filter list, core finish and matching library, organized closeout record and potential rebate/tax-incentive review</span><b>ADD</b></button></li>
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="home-intelligence-plus" data-builder-name="Home Intelligence Plus" data-builder-group="home-intelligence" data-default-label="ADD"><span><strong class="text-green">Home Intelligence Plus:</strong> quoted by project — deeper product and finish documentation, expanded warranty and manual organization, detailed maintenance scheduling, consumables planning, supplier information, potential rebate/tax-incentive review and supporting paperwork</span><b>ADD</b></button></li>
-                        </ul>
-                        <p class="upgrade-item-desc">Both include potential rebates and tax incentives for documented home improvements. Eligibility and savings are not guaranteed.</p>
-                        <a href="add-ons.html#home-intelligence" class="btn btn-outline-green">LEARN MORE</a>
-                    </div>
-                    <div id="annual-home-checkup">
-                        <h4 class="upgrade-item-title">ANNUAL HOME CHECKUP &amp; MAINTENANCE RECORD</h4>
-                        <p class="upgrade-item-desc">A certified inspector completes an annual exterior and interior checklist, records visible conditions, captures thermal reference images when conditions permit, documents safely accessible crawlspace and attic areas, and updates your Digital Home Record.</p>
-                        <ul class="upgrade-list builder-price-list">
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="annual-home-health-scan" data-builder-name="Annual Home Health Scan"  data-builder-group="annual-checkup" data-default-label="ADD"><span><strong class="text-green">Annual Home Health Scan:</strong> quoted annually</span><b>ADD</b></button></li>
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="annual-home-health-expanded" data-builder-name="Expanded Annual Home Checkup &amp; Maintenance" data-builder-group="annual-checkup" data-default-label="ADD"><span><strong class="text-green">Expanded Annual Home Checkup &amp; Maintenance:</strong> quoted annually<br>Annual scan, advance shopping list, accessible filter and battery changes, agreed routine maintenance, and home care and warranty records</span><b>ADD</b></button></li>
-                        </ul>
-                        <p class="upgrade-item-desc">Expanded service includes agreed routine yearly tasks from your purchased Home Intelligence Plus maintenance plan. Annual service scope is confirmed in a written proposal.</p>
-                        <p style="font-size: 12px; color: #7c8790; font-style: italic;">Homes over 4,000 sq. ft., multiple structures, difficult access or extended travel require a separate written quote. Consumables, specialist services and repair work are additional. This is not a code inspection, engineering service or diagnosis.</p>
-                        <a href="services.html#annual-home-checkup" class="btn btn-outline-green">LEARN MORE</a>
-                    </div>
-                    <div id="mr-mrs-smith-upgrade">
-                        <p class="pricing-card-highlight"><strong>PREVIEW — PENDING LEGAL REVIEW</strong></p>
-                        <h4 class="upgrade-item-title">MR. &amp; MRS. SMITH PROTECTION — CHANGE &amp; APPROVAL RECORD</h4>
-                        <p class="upgrade-item-desc">Construction changes should never depend on memory or a handshake. This proposed add-on creates an organized, timestamped record of significant requested changes, who requested them, supplied cost or schedule information, and the required owner and contractor approvals.</p>
-                        <ul class="upgrade-list">
-                            <li><strong class="text-green">Per project:</strong> up to 10 qualifying documented changes</li>
-                            <li><strong class="text-green">For each additional change:</strong> additional documented changes</li>
-                        </ul>
-                        <p style="font-size: 12px; color: #7c8790; font-style: italic;">Draft preview only. Not active and not available for purchase or signing. Activation is subject to Idaho construction-counsel review, an approved change-order form and coordination with the governing owner-builder agreement. Site Line documents the record; it does not provide legal advice or determine whether a change is legally binding.</p>
-                        <a href="add-ons.html#mr-mrs-smith" class="btn btn-outline-green">READ THE DRAFT</a>
-                        <a href="contact.html?subject=Mr%20and%20Mrs%20Smith%20Launch%20Notification" class="btn btn-outline-green">REQUEST LAUNCH NOTIFICATION</a>
-                    </div>
-                    <div id="private-construction-inspection-upgrade">
-                        <p class="pricing-card-highlight"><strong>PRE-ENROLLMENT — QUALIFIED INSPECTOR REQUIRED</strong></p>
-                        <h4 class="upgrade-item-title">PRIVATE CONSTRUCTION INSPECTION</h4>
-                        <p class="upgrade-item-desc">An optional private construction-quality review supported by Site Line documentation and performed or coordinated through a properly qualified, licensed or certified inspector as required for the project location.</p>
-                        <ul class="upgrade-list">
-                            <li><strong class="text-green">Three-stage construction inspection &amp; reporting:</strong> quoted by project — foundation, framing and final; a written report for each stage</li>
-                            <li><strong class="text-green">Single-stage inspection &amp; report:</strong> quoted by project — on its own or as an added stage</li>
-                        </ul>
-                        <p style="font-size: 12px; color: #7c8790; font-style: italic;">This is a private construction-quality service. It does not replace municipal inspections, engineering, code enforcement or specialty-trade certification. Activation requires the qualified inspector, applicable credentials, insurance, approved checklist, report format and customer agreement.</p>
-                        <a href="construction-inspection-scope.html" class="btn btn-outline-green">VIEW DRAFT CHECKLIST</a>
-                        <a href="add-ons.html#private-construction-inspection" class="btn btn-outline-green">LEARN MORE</a>
-                        <a href="contact.html?subject=Private%20Construction%20Inspection%20Availability" class="btn btn-primary">REQUEST AVAILABILITY</a>
-                    </div>
-                    <div id="printed-model-upgrade">
-                        <h4 class="upgrade-item-title">3D PRINTED SCALE MODEL</h4>
-                        <p class="upgrade-item-desc"><strong>Your Home in Your Hands.</strong> Turn your approved digital home into a detailed physical scale model you can hold, display and keep long after construction is complete.</p>
-                        <ul class="upgrade-list builder-price-list">
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="model-standard" data-builder-name="Standard Physical Home Model" data-builder-group="printed-model" data-default-label="ADD"><span><strong class="text-green">Price on request:</strong> Standard Physical Home Model</span><b>ADD</b></button></li>
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="model-detailed" data-builder-name="Detailed Physical Home Model" data-builder-group="printed-model" data-default-label="ADD"><span><strong class="text-green">Price on request:</strong> Detailed model with removable roof and/or separated floors where practical</span><b>ADD</b></button></li>
-                            <li><button type="button" class="builder-price-choice" data-builder-type="addon" data-builder-id="model-premium" data-builder-name="Premium Presentation / Site Model" data-builder-group="printed-model"  data-default-label="ADD"><span><strong class="text-green">Price on request:</strong> Premium Presentation / Site Model</span><b>ADD</b></button></li>
-                        </ul>
-                        <p class="upgrade-item-desc">Size reference: approximately 8 × 8 inches of tabletop footprint. Model dimensions, height and scale vary with the home and selected option; final size is confirmed in the written proposal. Final price depends on complexity, finish and presentation options.</p>
-                        <a href="add-ons.html#printed-models" class="btn btn-outline-green">LEARN MORE</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="package-builder-panel" id="package-builder">
-                <div class="package-builder-head">
-                    <div>
-                        <p class="builder-kicker">YOUR BUILD</p>
-                        <h2>PACKAGE BUILDER</h2>
-                    </div>
-                    <button type="button" class="builder-clear" id="builderClear">CLEAR</button>
-                </div>
-                <p class="builder-intro">Choose one package above, then tap any add-on to add or remove it. Your selections stay on this device while you compare options.</p>
-                <p class="builder-empty" id="builderEmpty">Choose a package or add-on to begin.</p>
-                <ul class="builder-selections" id="builderSelections"></ul>
-                <div class="builder-total-row">
-                    <span id="builderTotal">Select services to request a quote</span>
-                    <span class="builder-count"><span id="builderCount">0</span> selected</span>
-                </div>
-                <p class="builder-estimate-note" id="builderEstimateNote">We will confirm scope and pricing in a written proposal.</p>
-                <div class="builder-payment-box"><div><p class="builder-payment-label">PRIVATE QUOTE</p><p class="builder-payment-terms">Select services and request a written proposal.</p></div><button type="button" class="btn btn-primary builder-pay-now" id="builderPayNow" disabled aria-disabled="true">REQUEST A QUOTE</button></div>
-                <div class="builder-actions">
-                    <button type="button" class="btn btn-outline-green builder-shop-more" id="builderContinueShopping">CONTINUE SHOPPING</button>
-                </div>
-                <p class="builder-payment-note">Your selections are sent to us for a personal quote. Pricing is confirmed in a written proposal.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- COMPARE OPTIONS -->
-    <section class="content-section" id="compare">
-        <div class="container">
-            <h2 class="section-heading packages-section-heading" style="margin-bottom: 40px;">COMPARE YOUR OPTIONS</h2>
-            
-            <div class="table-responsive">
-                <table class="compare-table reveal">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Documentation Only</th>
-                            <th>Visualization Packages</th>
-                            <th>Realtor / Existing Home</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Blueprint-based 3D</td>
-                            <td></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Full-scale pre-build VR</td>
-                            <td></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Existing-home 3D walkthrough</td>
-                            <td></td>
-                            <td></td>
-                            <td><span class="check-icon">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>LiDAR / 3D documentation</td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Thermal imagery</td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Drone imagery</td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Crawlspace / attic capture</td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                        </tr>
-                        <tr>
-                            <td>Photorealistic visualization</td>
-                            <td></td>
-                            <td class="text-light-gray">Optional</td>
-                            <td class="text-light-gray">Optional</td>
-                        </tr>
-                        <tr>
-                            <td>3D printed scale model</td>
-                            <td></td>
-                            <td class="text-light-gray">Optional upgrade</td>
-                            <td class="text-light-gray">Optional upgrade</td>
-                        </tr>
-                        <tr>
-                            <td>Permanent visual record</td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                            <td><span class="check-icon">✓</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <p style="font-size: 12px; color: #7c8790; margin-top: 20px; font-style: italic;">The written proposal controls exact scope, included visits, deliverables, schedule, travel, and add-ons. Prices exclude unapproved travel, third-party fees, special access costs, applicable taxes, and customer-requested scope changes. Site Line Visuals provides visualization and documentation, not architectural, engineering, surveying, or code-enforcement services unless a separately qualified provider is identified in writing.</p>
-        </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="content-section alt-bg">
-        <div class="container text-center">
-            <div class="cta-banner reveal">
-                <h2>NOT SURE WHICH PACKAGE FITS?</h2>
-                <p>Tell us about your home and we'll help match the scope to your project.</p>
-                <div class="cta-buttons">
-                    <a href="packages.html" class="btn btn-primary ">START YOUR PROJECT</a>
-                    <a href="realtor.html" class="btn btn-outline-green">REALTOR / EXISTING HOME</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- INTAKE FORM MODAL -->
-    <div id="projectModal" class="modal-overlay">
-        <div class="modal-content form-modal-wrapper">
-            <div class="form-modal-inner">
-                <button id="projectModalClose" class="form-modal-close">&times;</button>
-                
-                <div class="form-modal-iframe-wrap">
-                    <iframe 
-                        src="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec" 
-                        class="form-modal-iframe"
-                        scrolling="no"
-                        frameborder="0">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER SECTION -->
-    <div class="page-bottom-nav"><a href="#">↑ Back to Top</a></div>
-
-    <footer class="site-footer">
-        <div class="container footer-container">
-            
-            <div class="footer-logo">
-                <img src="images/logo.png" alt="Site Line Visuals" width="160">
-                <p class="footer-value-line">
+<p id="upgrades"><a class="btn btn-outline-green" href="customize.html">VIEW OPTIONAL ADD-ONS →</a></p></div>
+</section>
+<!-- COMPARE OPTIONS -->
+<section class="content-section" id="compare">
+<div class="container">
+<h2 class="section-heading packages-section-heading" style="margin-bottom: 40px;">COMPARE YOUR OPTIONS</h2>
+<div class="table-responsive">
+<table class="compare-table reveal">
+<thead>
+<tr>
+<th></th>
+<th>Documentation Only</th>
+<th>Visualization Packages</th>
+<th>Realtor / Existing Home</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blueprint-based 3D</td>
+<td></td>
+<td><span class="check-icon">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Full-scale pre-build VR</td>
+<td></td>
+<td><span class="check-icon">✓</span></td>
+<td></td>
+</tr>
+<tr>
+<td>Existing-home 3D walkthrough</td>
+<td></td>
+<td></td>
+<td><span class="check-icon">✓</span></td>
+</tr>
+<tr>
+<td>LiDAR / 3D documentation</td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+</tr>
+<tr>
+<td>Thermal imagery</td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+</tr>
+<tr>
+<td>Drone imagery</td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+</tr>
+<tr>
+<td>Crawlspace / attic capture</td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+</tr>
+<tr>
+<td>Photorealistic visualization</td>
+<td></td>
+<td class="text-light-gray">Optional</td>
+<td class="text-light-gray">Optional</td>
+</tr>
+<tr>
+<td>3D printed scale model</td>
+<td></td>
+<td class="text-light-gray">Optional upgrade</td>
+<td class="text-light-gray">Optional upgrade</td>
+</tr>
+<tr>
+<td>Permanent visual record</td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+<td><span class="check-icon">✓</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size: 12px; color: #7c8790; margin-top: 20px; font-style: italic;">The written proposal controls exact scope, included visits, deliverables, schedule, travel, and add-ons. Prices exclude unapproved travel, third-party fees, special access costs, applicable taxes, and customer-requested scope changes. Site Line Visuals provides visualization and documentation, not architectural, engineering, surveying, or code-enforcement services unless a separately qualified provider is identified in writing.</p>
+</div>
+</section>
+<!-- FINAL CTA -->
+<section class="content-section alt-bg">
+<div class="container text-center">
+<div class="cta-banner reveal">
+<h2>NOT SURE WHICH PACKAGE FITS?</h2>
+<p>Tell us about your home and we'll help match the scope to your project.</p>
+<div class="cta-buttons">
+<a class="btn btn-primary" href="packages.html">START YOUR PROJECT</a>
+<a class="btn btn-outline-green" href="realtor.html">REALTOR / EXISTING HOME</a>
+</div>
+</div>
+</div>
+</section>
+<!-- INTAKE FORM MODAL -->
+<div class="modal-overlay" id="projectModal">
+<div class="modal-content form-modal-wrapper">
+<div class="form-modal-inner">
+<button class="form-modal-close" id="projectModalClose">×</button>
+<div class="form-modal-iframe-wrap">
+<iframe class="form-modal-iframe" frameborder="0" scrolling="no" src="https://script.google.com/macros/s/AKfycbxZFA-LA6kgTBS8Hre0f7ZmTF-DIvrzijr5NN31QNaYdLXiHhJIJ-e5nPq87_2ZK53G/exec">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<!-- FOOTER SECTION -->
+<div class="page-bottom-nav"><a href="#">↑ Back to Top</a></div>
+<footer class="site-footer">
+<div class="container footer-container">
+<div class="footer-logo">
+<img alt="Site Line Visuals" src="images/logo.png" width="160"/>
+<p class="footer-value-line">
                     See it before you build it. Document it while you build it. Revisit it after it's built.
                 </p>
-            </div>
-
-            <div class="footer-legal-links">
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="join-team.html">Join Our Team</a>
-            </div>
-            
-            <div class="footer-tagline">
-                <p>WALK YOUR HOME BEFORE IT'S BUILT.</p>
-                <a href="https://sitelinevisuals.com" target="_blank">SITELINEVISUALS.COM</a>
-            </div>
-
-        </div>
-    </footer>
-
-    <script src="js/main.js?v=intake-test-20260924"></script>
-    <script src="js/package-builder.js?v=private-quotes-20260923"></script>
-</body>
+</div>
+<div class="footer-legal-links">
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a href="join-team.html">Join Our Team</a>
+</div>
+<div class="footer-tagline">
+<p>WALK YOUR HOME BEFORE IT'S BUILT.</p>
+<a href="https://sitelinevisuals.com" target="_blank">SITELINEVISUALS.COM</a>
+</div>
+</div>
+</footer>
+<script src="js/main.js?v=intake-test-20260924"></script>
+<script src="js/package-builder.js?v=separate-addons-20261010"></script>
+<script>if(['#upgrades','#printed-model-upgrade','#home-intelligence-upgrade','#annual-home-checkup'].includes(location.hash)){location.replace('customize.html'+(location.hash==='#upgrades'?'':location.hash));}</script></body>
 </html>

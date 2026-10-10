@@ -58,6 +58,7 @@
     state.package = itemFromButton(button);
     saveState();
     render();
+    window.location.assign("customize.html");
   }
 
   function showAddedMessage(name) {
@@ -193,8 +194,7 @@
     }
 
     if (event.target.closest('#builderContinueShopping')) {
-      var upgrades = document.getElementById('upgrades');
-      if (upgrades) upgrades.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.location.assign('customize.html');
       return;
     }
 
@@ -214,3 +214,4 @@
   saveState();
   render();
 })();
+
