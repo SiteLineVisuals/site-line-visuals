@@ -21,7 +21,6 @@
 <circle cx="370.9" cy="82.2" r="170" fill="url(#light)"/>
 <g><path d="M370.9 82.2 Q307.4 74.7 244.0 103.1" fill="none" stroke="#c6e8a9" stroke-width="1.7" stroke-dasharray="2.2 5" stroke-linecap="round" opacity=".85"/><circle cx="244.0" cy="103.1" r="5.5" fill="#a8ed3b" filter="url(#glow)"/><circle cx="244.0" cy="103.1" r="4.5" fill="#b5f846"/>
 <path d="M370.9 82.2 Q280.4 157.3 190.0 192.4" fill="none" stroke="#c6e8a9" stroke-width="1.7" stroke-dasharray="2.2 5" stroke-linecap="round" opacity=".85"/><circle cx="190.0" cy="192.4" r="5.5" fill="#a8ed3b" filter="url(#glow)"/><circle cx="190.0" cy="192.4" r="4.5" fill="#b5f846"/>
-<path d="M370.9 82.2 Q255.7 183.9 140.5 321.6" fill="none" stroke="#c6e8a9" stroke-width="1.7" stroke-dasharray="2.2 5" stroke-linecap="round" opacity=".85"/><circle cx="140.5" cy="321.6" r="5.5" fill="#a8ed3b" filter="url(#glow)"/><circle cx="140.5" cy="321.6" r="4.5" fill="#b5f846"/>
 <path d="M370.9 82.2 Q370.4 195.3 370.0 268.4" fill="none" stroke="#c6e8a9" stroke-width="1.7" stroke-dasharray="2.2 5" stroke-linecap="round" opacity=".85"/><circle cx="370.0" cy="268.4" r="5.5" fill="#a8ed3b" filter="url(#glow)"/><circle cx="370.0" cy="268.4" r="4.5" fill="#b5f846"/>
 <path d="M370.9 82.2 Q471.7 130.7 572.5 215.2" fill="none" stroke="#c6e8a9" stroke-width="1.7" stroke-dasharray="2.2 5" stroke-linecap="round" opacity=".85"/><circle cx="572.5" cy="215.2" r="5.5" fill="#a8ed3b" filter="url(#glow)"/><circle cx="572.5" cy="215.2" r="4.5" fill="#b5f846"/>
 <path d="M370.9 82.2 Q521.2 106.0 671.5 89.8" fill="none" stroke="#c6e8a9" stroke-width="1.7" stroke-dasharray="2.2 5" stroke-linecap="round" opacity=".85"/><circle cx="671.5" cy="89.8" r="5.5" fill="#a8ed3b" filter="url(#glow)"/><circle cx="671.5" cy="89.8" r="4.5" fill="#b5f846"/>
@@ -30,7 +29,7 @@
 <circle cx="370.9" cy="82.2" r="18" fill="none" stroke="#a2f62f" stroke-width="2.5" opacity=".8"/>
 <circle cx="370.9" cy="82.2" r="9" fill="#dcff79"/>
 <g fill="#c0cbc7" opacity=".83" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="16" letter-spacing="3">
-<text x="117" y="130">WASHINGTON</text><text x="105" y="272">OREGON</text><text x="411" y="267">IDAHO</text><text x="660" y="176">MONTANA</text><text x="94" y="475">CALIFORNIA</text><text x="293" y="454">NEVADA</text><text x="545" y="469">UTAH</text>
+<text x="117" y="130">WASHINGTON</text><text x="105" y="272">OREGON</text><text x="411" y="267">IDAHO</text><text x="660" y="176">MONTANA</text><text x="293" y="454">NEVADA</text><text x="545" y="469">UTAH</text>
 </g>
 <path d="M390.9 69.2 L418.9 43.2" stroke="#b2ef56" stroke-width="1.8"/>
 <rect x="417.9" y="3.2" width="285" height="54" rx="5" fill="#111a1a" fill-opacity=".9" stroke="#9cdb46" stroke-opacity=".75"/>
