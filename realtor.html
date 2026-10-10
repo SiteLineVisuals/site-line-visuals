@@ -12,7 +12,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="css/style.css?v=home-care-20260922" rel="stylesheet"/>
-</head>
+<style>#pricing .pricing-grid{display:grid;grid-template-columns:1fr!important;gap:24px}#pricing .home-horizontal{display:grid!important;grid-template-columns:minmax(230px,1fr) minmax(0,2fr);gap:28px;height:auto!important} .home-summary,.home-detail{min-width:0;overflow-wrap:break-word}.home-detail{border-left:1px solid #ffffff26;padding-left:28px}.home-detail ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 22px}.home-detail .pricing-btn{width:auto;max-width:100%}@media(max-width:850px){.home-detail ul{grid-template-columns:1fr}}@media(max-width:600px){#pricing .home-horizontal{grid-template-columns:1fr}.home-detail{border-left:0;border-top:1px solid #ffffff26;padding:20px 0 0}}</style></head>
 <body>
 <!-- HEADER -->
 <header class="header">
@@ -77,7 +77,7 @@
 <div class="container">
 <div class="breadcrumb">Home / <span class="crumb-current">Realtor / Existing Home</span></div>
 <h1>SHOW THE PROPERTY CLEARLY. GIVE BUYERS A RICHER WAY TO UNDERSTAND IT.</h1>
-<p>A separate visual-documentation and presentation path for listings, remote buyers, investment properties, cabins, short-term rentals, luxury homes, and existing homeowners — built around 3D capture, thermal imagery, aerial documentation, and accessible-space scanning, not just listing photos.</p>
+
 </div>
 </section>
 <!-- PRICING -->
@@ -85,11 +85,14 @@
 <div class="container">
 <h2 class="section-heading packages-section-heading">EXISTING HOME PACKAGES</h2>
 <div class="pricing-grid">
-<div class="pricing-card reveal dark-bg">
-<h3>Existing Home Visual Package</h3>
+<div class="pricing-card reveal dark-bg home-horizontal"><div class="home-summary">
+<h3>Existing Home Package</h3>
 <div class="price">$1,495</div>
 <div class="target-audience">For standard residential listings, homeowners, remote buyers, investment properties, cabins and short-term rentals.</div>
-<ul>
+
+
+
+</div><div class="home-detail"><ul>
 <li>One coordinated primary property visit</li>
 <li>Interior LiDAR/3D walkthrough capture</li>
 <li>Compatible desktop/VR viewing</li>
@@ -97,31 +100,16 @@
 <li>Drone/exterior/lot-context imagery when permitted</li>
 <li>Organized visual property record</li>
 <li>Selected realtor-ready marketing assets</li>
-</ul>
-<div class="best-for">Generally intended for standard homes up to approximately 3,500 sq. ft.</div>
-<button class="btn btn-primary pricing-btn builder-choice" data-builder-id="existing-home-visual" data-builder-name="Existing Home Visual Package" data-builder-price="1495" data-builder-starting="false" data-builder-type="package" data-default-label="ADD EXISTING HOME PACKAGE" type="button">ADD EXISTING HOME PACKAGE</button>
-</div>
-<div class="pricing-card reveal dark-bg featured-card">
-<h3>Premium Realtor / Existing Home</h3>
-<div class="price">Price on request</div>
-<div class="target-audience">For higher-end listings and sellers who want stronger presentation and expanded documentation.</div>
-<p class="pricing-card-highlight">Includes everything above, plus:</p>
-<ul>
-<li>Expanded thermal capture</li>
-<li>Enhanced VR presentation</li>
-<li>Higher-end cinematic editing</li>
-<li>Expanded marketing assets</li>
-<li>Additional finish/product documentation</li>
-<li>More polished listing presentation</li>
-</ul>
-<button class="btn btn-primary pricing-btn builder-choice" data-builder-id="existing-home-premium" data-builder-name="Premium Realtor / Existing Home" data-builder-type="package" data-default-label="ADD PREMIUM PACKAGE" type="button">ADD PREMIUM PACKAGE</button>
-</div>
-<div class="pricing-card reveal dark-bg">
+<li>Expanded thermal capture</li><li>Enhanced VR presentation</li><li>Higher-end cinematic editing</li><li>Expanded marketing assets</li><li>Additional finish/product documentation</li><li>More polished listing presentation</li><li>Virtual decluttering and interior staging of up to 6 selected photos — digitally remove personal belongings and show the rooms furnished for presentation</li><li>Branded Property Marketing Package — a professionally edited 60–90 second property video with your approved logo and branding</li><li>For occupied or vacant listings. Existing furniture and personal contents can be digitally removed and the space can be professionally restaged for presentation.</li></ul><div class="best-for">Intended for standard homes under 3,500 sq. ft.</div><button class="btn btn-primary pricing-btn builder-choice" data-builder-id="existing-home-visual" data-builder-name="Existing Home Package" data-builder-price="1495" data-builder-starting="false" data-builder-type="package" data-default-label="ADD EXISTING HOME PACKAGE" type="button">ADD EXISTING HOME PACKAGE</button></div></div>
+
+<div class="pricing-card reveal dark-bg home-horizontal"><div class="home-summary">
 <h3>Luxury / Waterfront / Large Estate</h3>
 <div class="price price-text">Price on request</div>
 <div class="target-audience">For exceptional properties requiring comprehensive coverage.</div>
 <p class="pricing-card-highlight">Ideal for:</p>
-<ul>
+
+
+</div><div class="home-detail"><ul>
 <li>Luxury properties</li>
 <li>Waterfront homes</li>
 <li>Large acreage</li>
@@ -130,9 +118,7 @@
 <li>Extensive drone work</li>
 <li>High-detail visualization</li>
 <li>Advanced property presentation</li>
-</ul>
-<button class="btn btn-primary pricing-btn builder-choice" data-builder-id="existing-home-luxury" data-builder-name="Luxury / Waterfront / Large Estate" data-builder-price="0" data-builder-quote="true" data-builder-type="package" data-default-label="ADD LUXURY PACKAGE" type="button">ADD LUXURY PACKAGE</button>
-</div>
+</ul><button class="btn btn-primary pricing-btn builder-choice" data-builder-id="existing-home-luxury" data-builder-name="Luxury / Waterfront / Large Estate" data-builder-price="0" data-builder-quote="true" data-builder-type="package" data-default-label="ADD LUXURY PACKAGE" type="button">ADD LUXURY PACKAGE</button></div></div>
 </div>
 </div>
 </section>
@@ -140,22 +126,9 @@
 <section class="content-section alt-bg" id="upgrades">
 <div class="container">
 <div class="upgrade-section reveal">
-<h3 class="upgrade-title" style="margin-bottom: 40px;">FEATURED UPGRADES</h3>
-<div class="realtor-featured-upgrade">
-<h4 class="rf-upgrade-title">CRAWLSPACE &amp; ATTIC 3D / LiDAR SCANNING</h4>
-<p class="pricing-card-highlight">OPTIONAL REALTOR / EXISTING HOME ADD-ON</p>
-<p class="rf-upgrade-subtitle">SEE THE SPACES MOST HOMEOWNERS NEVER SEE.</p>
-<p class="rf-upgrade-desc">Many homeowners purchase a property without ever fully seeing the crawlspace or attic. Site Line Visuals can create a navigable 3D/LiDAR visual record of safe and accessible crawlspace and attic areas so the captured space can later be revisited digitally or in compatible VR.</p>
-<p class="rf-upgrade-desc">This can provide a dated visual reference showing the location and visible condition of: <strong>Plumbing, Ductwork, Insulation, Framing, Mechanical components, Utilities, and Other accessible systems.</strong></p>
-<p class="rf-upgrade-disclaimer">Documentation represents visible conditions at the time of capture and is not a home inspection, engineering evaluation or guarantee of concealed conditions.</p>
-<button class="btn btn-primary builder-choice" data-builder-id="existing-crawlspace-attic" data-builder-name="Crawlspace &amp; Attic 3D / LiDAR Scanning" data-builder-type="addon" data-default-label="ADD CRAWLSPACE / ATTIC 3D SCAN" type="button">ADD CRAWLSPACE / ATTIC 3D SCAN</button>
-</div>
-<div>
-<h4 class="upgrade-item-title">VIRTUAL FURNITURE / STAGING</h4>
-<p class="upgrade-item-desc">For occupied or vacant listings. Existing furniture and personal contents can be digitally removed and the space can be professionally restaged for presentation.</p>
-<p class="upgrade-item-desc"><strong class="text-green">quoted by project</strong>, depending on the number of rooms, style, level of detail, and rendering complexity — confirmed in your written proposal.</p>
-<button class="btn btn-primary builder-choice" data-builder-id="virtual-staging" data-builder-name="Virtual Furniture / Staging" data-builder-type="addon" data-default-label="ADD VIRTUAL STAGING" type="button">ADD VIRTUAL STAGING</button>
-</div>
+
+
+
 </div>
 <div class="package-builder-panel reveal" id="package-builder">
 <div class="package-builder-head">
@@ -245,6 +218,6 @@
 </div>
 </footer>
 <script src="js/main.js?v=intake-test-20260924"></script>
-<script src="js/package-builder.js?v=approved-prices-20261010"></script>
+<script src="js/package-builder.js?v=package-review-flow-20261010"></script>
 </body>
 </html>
