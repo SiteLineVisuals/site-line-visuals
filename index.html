@@ -45,6 +45,16 @@
 .bottom-sections-wrapper .audience-card-box{order:1}
 .process-card-box .record-step h4{overflow-wrap:normal!important;word-break:normal!important}
 </style>
+<style>
+.process-card-box .record-step{grid-template-columns:minmax(210px,1fr) minmax(0,2fr)!important;gap:14px 26px!important;align-items:start}
+.process-card-box .record-stage-visual{grid-column:1;grid-row:1 / span 3;margin:0;min-width:0}
+.process-card-box .record-stage-visual img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px}
+.process-card-box .record-stage-visual figcaption{font-size:11px;line-height:1.5;color:#c2cbd0;margin-top:7px}
+.process-card-box .record-step h4{grid-column:2;grid-row:1}
+.process-card-box .record-step p{grid-column:2;grid-row:2}
+.process-card-box .record-step-link{grid-column:2;grid-row:3}
+@media(max-width:600px){.process-card-box .record-step{grid-template-columns:1fr!important}.process-card-box .record-stage-visual,.process-card-box .record-step h4,.process-card-box .record-step p,.process-card-box .record-step-link{grid-column:1;grid-row:auto}}
+</style>
 </head>
 <body>
 <!-- HEADER -->
@@ -211,16 +221,19 @@
 <p class="record-subtitle">Blueprints show what is supposed to be built. Site Line Visuals helps you experience it before construction and creates a visual record of what was actually captured during the build.</p>
 <div class="process-steps-row record-grid">
 <a aria-label="Read the full before-construction description" class="proc-step record-step reveal" href="our-process.html#before-construction">
+<figure class="record-stage-visual"><img src="images/walk-full-scale.jpeg" alt="Illustrative full-scale proposed home visualization on the lot before construction" loading="lazy" width="800" height="500"><figcaption>Illustrative example</figcaption></figure>
 <h4>BEFORE CONSTRUCTION</h4>
 <p>Walk through the proposed home at full scale before construction begins. Review room sizes, sight lines, windows, stairs, and major design relationships while changes are easier.</p>
 <span class="record-step-link">READ FULL DESCRIPTION →</span>
 </a>
 <a aria-label="Read the full during-construction description" class="proc-step record-step reveal" href="our-process.html#during-construction">
+<figure class="record-stage-visual"><img src="images/s3.jpeg" alt="Illustrative LiDAR 3D scanning of exposed framing during construction" loading="lazy" width="800" height="500"><figcaption>Illustrative example</figcaption></figure>
 <h4>DURING CONSTRUCTION</h4>
 <p>Capture selected framing, mechanical systems, insulation, exterior and site conditions, and important progress stages before they are covered.</p>
 <span class="record-step-link">READ FULL DESCRIPTION →</span>
 </a>
 <a aria-label="Read the full after-construction description" class="proc-step record-step reveal" href="our-process.html#after-construction">
+<figure class="record-stage-visual"><img src="images/s1.jpeg" alt="Illustrative finished home after construction" loading="lazy" width="800" height="500"><figcaption>Illustrative example</figcaption></figure>
 <h4>AFTER CONSTRUCTION</h4>
 <p>Return to captured construction stages to help locate documented hidden systems and support maintenance, repairs, remodeling, and future property understanding.</p>
 <span class="record-step-link">READ FULL DESCRIPTION →</span>
