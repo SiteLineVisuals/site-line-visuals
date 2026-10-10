@@ -3874,6 +3874,21 @@ a.join-role:hover, a.join-role:focus-visible { border-color: var(--primary-green
     margin-bottom: 0;
 }
 
+.zip-checker-compact {
+    border-color: rgba(132, 204, 22, 0.42);
+}
+
+.zip-checker-compact h4 {
+    font-size: clamp(20px, 2.2vw, 24px);
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+}
+
+.zip-checker-compact .zip-checker-intro {
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
 .watch-video-btn-above-cards {
     margin-bottom: 20px;
 }
