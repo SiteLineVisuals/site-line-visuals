@@ -207,14 +207,18 @@
     }
 
     if (event.target.closest('#builderPayNow')) {
-      var selected = [];
-      if (state.package) selected.push(state.package.name);
-      state.addons.forEach(function (item) {
-        selected.push(item.name + (isVisualizationExtra(item.id) ? ' x' + quantity(item) : ''));
+      var items = [state.package].concat(state.addons).filter(Boolean);
+      if (!items.length) return;
+      var selected = items.map(function (item) {
+        return item.name + (quantity(item) > 1 ? ' x' + quantity(item) : '') + ' — ' +
+          (item.quote ? 'Custom quote' : (item.starting ? 'From ' : '') + money((item.price || 0) * quantity(item)));
       });
-      if (!selected.length) return;
+      var total = items.reduce(function (sum, item) { return sum + (item.price || 0) * quantity(item); }, 0);
+      var estimate = money(total) + (items.some(function (item) { return item.quote; }) ? ' + custom quote' : '');
       window.location.assign('mailto:info@sitelinevisuals3d.com?subject=' + encodeURIComponent('Project quote request') +
-        '&body=' + encodeURIComponent('Please quote these selections:\n' + selected.join('\n')));
+        '&body=' + encodeURIComponent('Please quote these selections:\n' + selected.join('\n') +
+        '\n\nEstimated total: ' + estimate + '\nPlease confirm scope and pricing in a written proposal.'));
+
     }
   });
 
@@ -222,6 +226,3 @@
   saveState();
   render();
 })();
-
-
-

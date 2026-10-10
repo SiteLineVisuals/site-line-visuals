@@ -4,7 +4,7 @@
   var STORAGE_KEY = 'slv-package-build-v2';
   var VISUALIZATION_ID = 'interior-exterior-visualization';
   var RETIRED_ADDONS = ['model-reprint', 'home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
-  var PRICE_CATALOG = {"documentation-only":{"price":2495,"starting":false,"quote":false,"name":"Construction Documentation Only"},"level-1":{"price":3495,"starting":false,"quote":false,"name":"Visual Build — 3 Visits"},"level-2":{"price":5495,"starting":false,"quote":false,"name":"Extended Build Coverage — 6 Visits"},"level-3":{"price":7495,"starting":false,"quote":false,"name":"Detailed Build Coverage — 12 Visits"},"existing-home-visual":{"price":1495,"starting":false,"quote":false},"interior-exterior-visualization":{"price":1995,"starting":false,"quote":false},"alternate-decor-style":{"price":250,"starting":false,"quote":false},"additional-room-image":{"price":120,"starting":false,"quote":false},"home-intelligence-record":{"price":995,"starting":false,"quote":false},"home-intelligence-plus":{"price":1495,"starting":false,"quote":false},"annual-home-health-scan":{"price":495,"starting":true,"quote":false},"annual-home-health-expanded":{"price":995,"starting":false,"quote":false},"model-standard":{"price":695,"starting":false,"quote":false},"model-detailed":{"price":995,"starting":false,"quote":false},"model-premium":{"price":1495,"starting":true,"quote":false},"level-4":{"price":0,"quote":true,"name":"Custom Build Coverage"}};
+  var PRICE_CATALOG = {"documentation-only":{"price":2495,"starting":false,"quote":false,"name":"Construction Documentation Only"},"level-1":{"price":3495,"starting":false,"quote":false,"name":"Visual Build — 3 Visits"},"level-2":{"price":5495,"starting":false,"quote":false,"name":"Extended Build Coverage — 6 Visits"},"level-3":{"price":7495,"starting":false,"quote":false,"name":"Detailed Build Coverage — 12 Visits"},"existing-home-visual":{"price":1495,"starting":false,"quote":false,"name":"Existing Home Package"},"interior-exterior-visualization":{"price":1995,"starting":false,"quote":false},"alternate-decor-style":{"price":250,"starting":false,"quote":false},"additional-room-image":{"price":120,"starting":false,"quote":false},"home-intelligence-record":{"price":995,"starting":false,"quote":false},"home-intelligence-plus":{"price":1495,"starting":false,"quote":false},"annual-home-health-scan":{"price":495,"starting":true,"quote":false},"annual-home-health-expanded":{"price":995,"starting":false,"quote":false},"model-standard":{"price":695,"starting":false,"quote":false},"model-detailed":{"price":995,"starting":false,"quote":false},"model-premium":{"price":1495,"starting":true,"quote":false},"level-4":{"price":0,"quote":true,"name":"Custom Build Coverage"}};
   function money(n){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(n);}
   var state = { package: null, addons: [] };
 
@@ -207,14 +207,18 @@
     }
 
     if (event.target.closest('#builderPayNow')) {
-      var selected = [];
-      if (state.package) selected.push(state.package.name);
-      state.addons.forEach(function (item) {
-        selected.push(item.name + (isVisualizationExtra(item.id) ? ' x' + quantity(item) : ''));
+      var items = [state.package].concat(state.addons).filter(Boolean);
+      if (!items.length) return;
+      var selected = items.map(function (item) {
+        return item.name + (quantity(item) > 1 ? ' x' + quantity(item) : '') + ' — ' +
+          (item.quote ? 'Custom quote' : (item.starting ? 'From ' : '') + money((item.price || 0) * quantity(item)));
       });
-      if (!selected.length) return;
+      var total = items.reduce(function (sum, item) { return sum + (item.price || 0) * quantity(item); }, 0);
+      var estimate = money(total) + (items.some(function (item) { return item.quote; }) ? ' + custom quote' : '');
       window.location.assign('mailto:info@sitelinevisuals3d.com?subject=' + encodeURIComponent('Project quote request') +
-        '&body=' + encodeURIComponent('Please quote these selections:\n' + selected.join('\n')));
+        '&body=' + encodeURIComponent('Please quote these selections:\n' + selected.join('\n') +
+        '\n\nEstimated total: ' + estimate + '\nPlease confirm scope and pricing in a written proposal.'));
+
     }
   });
 
@@ -222,6 +226,3 @@
   saveState();
   render();
 })();
-
-
-
