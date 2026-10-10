@@ -4,6 +4,8 @@
   var STORAGE_KEY = 'slv-package-build-v2';
   var VISUALIZATION_ID = 'interior-exterior-visualization';
   var RETIRED_ADDONS = ['model-reprint', 'home-care-warranty', 'photo-still', 'room-visualization-4', 'premium-room-visualization', 'whole-home-visualization', 'additional-room', 'exterior-visualization', 'photo-walkthrough'];
+  var PRICE_CATALOG = {"documentation-only": {"price": 2049, "starting": false, "quote": false}, "level-1": {"price": 2899, "starting": false, "quote": false}, "level-2": {"price": 4549, "starting": false, "quote": false}, "level-3": {"price": 6199, "starting": false, "quote": false}, "existing-home-visual": {"price": 1249, "starting": false, "quote": false}, "interior-exterior-visualization": {"price": 1649, "starting": false, "quote": false}, "alternate-decor-style": {"price": 199, "starting": false, "quote": false}, "additional-room-image": {"price": 99, "starting": false, "quote": false}, "home-intelligence-record": {"price": 849, "starting": false, "quote": false}, "home-intelligence-plus": {"price": 1249, "starting": false, "quote": false}, "annual-home-health-scan": {"price": 399, "starting": true, "quote": false}, "annual-home-health-expanded": {"price": 849, "starting": false, "quote": false}, "model-standard": {"price": 599, "starting": false, "quote": false}, "model-detailed": {"price": 849, "starting": false, "quote": false}, "model-premium": {"price": 0, "starting": false, "quote": true}, "level-4": {"price": 0, "quote": true}};
+  function money(n){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(n);}
   var state = { package: null, addons: [] };
 
   function isVisualizationExtra(id) {
@@ -36,6 +38,7 @@
   }
 
   function saveState() {
+    [state.package].concat(state.addons).forEach(function(item){if(item && PRICE_CATALOG[item.id]){Object.assign(item,PRICE_CATALOG[item.id]);}});
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
   }
 
@@ -43,6 +46,7 @@
     return {
       id: button.dataset.builderId,
       name: button.dataset.builderName,
+      price: Number(button.dataset.builderPrice || 0),
       starting: button.dataset.builderStarting === 'true',
       quote: button.dataset.builderQuote === 'true',
       group: button.dataset.builderGroup || '',
@@ -99,7 +103,7 @@
         '<span aria-live="polite">' + qty + '</span>' +
         '<button type="button" data-quantity-id="' + item.id + '" data-quantity-delta="1" aria-label="Increase ' + item.name + '"' + (item.id === 'alternate-decor-style' && qty >= 2 ? ' disabled' : '') + '>+</button></span>'
       : '';
-    return '<li><span>' + item.name + '</span>' + controls +
+    return '<li><span>' + item.name + ' — ' + (item.quote ? 'Custom quote' : (item.starting ? 'From ' : '') + money((item.price || 0)*qty)) + '</span>' + controls +
       '<button type="button" class="builder-remove" data-remove-type="' + type + '" data-remove-id="' + item.id + '" aria-label="Remove ' + item.name + '">Remove</button></li>';
   }
 
@@ -146,7 +150,9 @@
 
     list.innerHTML = html;
     empty.hidden = count > 0;
-    totalEl.textContent = count ? 'Your selections are ready for a quote' : 'Select services to request a quote';
+    var items=[state.package].concat(state.addons).filter(Boolean);
+    var estimate=items.reduce(function(sum,item){return sum+(item.price||0)*quantity(item);},0);
+    totalEl.textContent=count ? 'Estimated total: '+money(estimate)+(items.some(function(item){return item.quote;})?' + custom quote':'') : 'Select services to request a quote';
     noteEl.textContent = 'We will confirm scope and pricing in a written proposal.';
     if (countEl) countEl.textContent = count;
     if (payButton) {
@@ -214,4 +220,5 @@
   saveState();
   render();
 })();
+
 
