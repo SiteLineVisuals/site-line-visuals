@@ -326,7 +326,7 @@ document.addEventListener("DOMContentLoaded", function () {
         quickNav.innerHTML = [
             '<a href="packages.html">Packages</a>',
             '<a href="examples.html">Examples</a>',
-            '<a href="contact.html">Get Help</a>'
+            '<a href="intake.html">Start Project</a>'
         ].join("");
         document.body.appendChild(quickNav);
     }
